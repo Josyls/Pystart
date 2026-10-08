@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workshop PyStart – Python do zero, só para mulheres (Turma 01)</title>
+<meta name="description" content="8 aulas ao vivo e online de Python do zero, só para mulheres. Turma de 10, professoras pacientes, aulas de Git, GitHub e LinkedIn. Começa em 14/10, às 19h30.">
+<meta name="theme-color" content="#F5038B">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+
+<!-- Prévia ao compartilhar no WhatsApp/Instagram/Facebook.
+     TROQUE "SEU-USUARIO" e "SEU-REPOSITORIO" pelo endereço real da página (precisa ser o endereço completo). -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Workshop PyStart – Python do zero, só para mulheres">
+<meta property="og:description" content="8 aulas ao vivo, turma de 10 mulheres, professoras pacientes. Começa em 14/10 às 19h30.">
+<meta property="og:url" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/">
+<meta property="og:image" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<script>document.documentElement.classList.add("js");setTimeout(function(){document.documentElement.classList.add("reveal-all")},3500);</script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-state="open">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="dev-warn" id="dev-warn" hidden>⚠️ Falta preencher o número do WhatsApp em <b>config.js</b> (campo <b>whatsapp</b>). Esta faixa só aparece no seu computador.</div>
+
+<!-- ============ TOPO ============ -->
+<header class="topbar">
+  <div class="wrap topbar__in">
+    <a class="brand" href="#topo" aria-label="Workshop PyStart – início">
+      <img src="assets/img/logo.png" width="46" height="46" alt="">
+      <span>Workshop PyStart</span>
+    </a>
+    <a class="btn btn--sm btn--lime" data-pay data-when="open" href="#garanta">Garanta sua vaga</a>
+    <a class="btn btn--sm btn--lime" data-wa="espera" data-when="full" href="#garanta">Lista de espera</a>
+    <a class="btn btn--sm btn--lime" data-wa="geral" data-when="closed" href="#garanta">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="topo">
+  <div class="wrap hero__grid">
+    <div class="hero__text">
+      <p class="pill pill--ink">Turma 01 · começa 14/10 às 19h30</p>
+      <h1>A tecnologia também é <span class="hl">coisa de mulher.</span></h1>
+      <p class="lead">Comece pelo <strong>Python, do zero</strong>. São 8 aulas ao vivo, professoras pacientes e uma turma de só 10 mulheres. Aqui ninguém precisa saber nada antes, e errar faz parte.</p>
+
+      <div class="cta-row">
+        <a class="btn btn--lime btn--lg" data-pay data-when="open" href="#garanta">Garanta sua vaga</a>
+        <a class="btn btn--lime btn--lg" data-wa="espera" data-when="full" href="#garanta">Entrar na lista de espera</a>
+        <a class="btn btn--lime btn--lg" data-wa="geral" data-when="closed" href="#garanta">Falar no WhatsApp</a>
+        <a class="btn btn--ghost btn--lg" data-wa="geral" data-when="open full" href="#garanta">Tirar dúvidas no WhatsApp</a>
+      </div>
+
+      <ul class="chips" aria-label="Resumo">
+        <li>Ao vivo e online</li>
+        <li>Aulas gravadas</li>
+        <li>Só mulheres</li>
+        <li>Sem experiência</li>
+      </ul>
+    </div>
+
+    <aside class="ticket card" aria-label="Resumo da turma">
+      <img class="ticket__logo" src="assets/img/logo.png" width="130" height="130" alt="Logo Workshop PyStart">
+      <p class="ticket__title">Turma 01 · Python básico</p>
+      <div class="countdown" data-countdown>
+        <div><b data-cd="d">--</b><span>dias</span></div>
+        <div><b data-cd="h">--</b><span>horas</span></div>
+        <div><b data-cd="m">--</b><span>min</span></div>
+        <div><b data-cd="s">--</b><span>seg</span></div>
+      </div>
+      <p class="countdown__note" data-cd-note>para a primeira aula (14/10, 19h30)</p>
+
+      <div class="seats" data-seats>
+        <div class="seats__bar" role="img" aria-label="Ocupação das vagas"><i data-seats-fill></i></div>
+        <p class="seats__txt" data-seats-text>—</p>
+      </div>
+
+      <p class="ticket__price"><s>R$ 200</s> <b>R$ 180</b> <span>à vista</span></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ PROBLEMA ============ -->
+<section class="sec sec--ink" id="problema">
+  <div class="wrap">
+    <p class="pill pill--lime reveal">O problema nunca foi você</p>
+    <h2 class="reveal">Quando algo é novo, a voz de dentro diz: <span class="hl-lime">“isso não é pra mim”.</span></h2>
+    <p class="sec__lead reveal">Essa sensação tem nome: síndrome da impostora. Ela é mais comum do que parece. Veja o que mostrou uma pesquisa da KPMG com mais de 700 executivas dos EUA:</p>
+
+    <div class="stats">
+      <div class="stat card card--pink reveal">
+        <b>75%</b>
+        <p>já sentiram síndrome da impostora em algum momento da carreira</p>
+      </div>
+      <div class="stat card card--pink reveal">
+        <b>58%</b>
+        <p>já tiveram medo excessivo de falhar</p>
+      </div>
+    </div>
+    <p class="source">Fonte: KPMG, <em>Women’s Leadership Summit Report</em> (2020), com mais de 700 participantes do evento entre 2015 e 2019, executivas de empresas americanas. O dado não é sobre alunas brasileiras iniciantes.</p>
+
+    <p class="sec__lead sec__lead--big reveal">Na nossa visão, o que trava <strong>não é falta de capacidade</strong>. É falta de um ambiente onde errar seja permitido. Foi para criar esse ambiente que o PyStart existe.</p>
+
+    <h3 class="sub reveal">Mulheres que já mudaram a tecnologia</h3>
+    <ul class="pioneers">
+      <li class="reveal"><img src="assets/img/ada.jpg" width="120" height="120" alt="Retrato de Ada Lovelace" loading="lazy"><b>Ada Lovelace <em>1843</em></b><span>Escreveu o primeiro algoritmo da história.</span></li>
+      <li class="reveal"><img src="assets/img/hedy.jpg" width="120" height="120" alt="Retrato de Hedy Lamarr" loading="lazy"><b>Hedy Lamarr <em>1942</em></b><span>Patenteou o salto de frequências, que inspirou o Wi-Fi, o Bluetooth e o GPS.</span></li>
+      <li class="reveal"><img src="assets/img/grace.jpg" width="120" height="120" alt="Retrato de Grace Hopper" loading="lazy"><b>Grace Hopper <em>1952</em></b><span>Criou o primeiro compilador e ajudou a criar o COBOL.</span></li>
+      <li class="reveal"><img src="assets/img/margaret.jpg" width="120" height="120" alt="Retrato de Margaret Hamilton" loading="lazy"><b>Margaret Hamilton <em>1969</em></b><span>Liderou a equipe do software de bordo da Apollo 11.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ METODOLOGIA ============ -->
+<section class="sec sec--soft" id="metodologia">
+  <div class="wrap">
+    <p class="pill pill--ink reveal">Nossa metodologia</p>
+    <h2 class="reveal">Um jeito de ensinar <span class="hl-pink">pensado para mulheres.</span></h2>
+    <p class="sec__lead reveal">Professoras atenciosas, pacientes e acolhedoras, que ajudam a destravar quem está começando. São 5 pilares:</p>
+
+    <div class="grid grid--5">
+      <article class="card reveal"><span class="num">1</span><h3>Ambiente seguro: errar faz parte</h3><p>Aqui errar não é incompetência. Erro é etapa de quem constrói código.</p></article>
+      <article class="card reveal"><span class="num">2</span><h3>Paciência real: sem pergunta boba</h3><p>Todas são ouvidas. Se você travar, a professora abre a tela junto com você e ajuda até na configuração do ambiente.</p></article>
+      <article class="card reveal"><span class="num">3</span><h3>Git, GitHub e LinkedIn</h3><p>O curso tem aulas desses temas para você aprender a mostrar o que construiu e se posicionar melhor na área.</p></article>
+      <article class="card reveal"><span class="num">4</span><h3>Confiança e postura profissional</h3><p>Conquistas validadas a cada etapa e feedback para recuperar a confiança.</p></article>
+      <article class="card reveal"><span class="num">5</span><h3>Rede de apoio: você não está sozinha</h3><p>Um grupo de WhatsApp da turma para trocar experiências, dividir dores e comemorar as vitórias.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMENTA ============ -->
+<section class="sec sec--dots" id="ementa">
+  <div class="wrap">
+    <p class="pill pill--pink reveal">8 aulas ao vivo</p>
+    <h2 class="reveal">O que você vai <span class="hl-pink">aprender</span></h2>
+    <p class="sec__lead reveal">Python do zero, passo a passo, até chegar a um projeto integrador.</p>
+
+    <ol class="syllabus">
+      <li class="card reveal"><span>1</span>Variáveis, tipos e inputs</li>
+      <li class="card reveal"><span>2</span>if, elif e else</li>
+      <li class="card reveal"><span>3</span>Laços for e while</li>
+      <li class="card reveal"><span>4</span>Listas e tuplas</li>
+      <li class="card reveal"><span>5</span>Dicionários e sets</li>
+      <li class="card reveal"><span>6</span>Funções</li>
+      <li class="card reveal"><span>7</span>Tratamento de erros e arquivos</li>
+      <li class="card card--pink reveal"><span>8</span>Projeto integrador</li>
+    </ol>
+    <p class="extra card card--lime reveal"><b>Também no curso:</b> aulas de Git, GitHub e LinkedIn.</p>
+
+    <div class="play card reveal" id="play">
+      <p class="pill pill--ink">Teste na hora</p>
+      <h3>Veja como é ler o seu primeiro código</h3>
+      <label for="play-name">Digite seu nome:</label>
+      <input id="play-name" type="text" maxlength="20" autocomplete="off" placeholder="Seu nome">
+      <pre class="code" aria-live="polite"><code id="play-code">nome = "Ana"
+print(f"Olá, {nome}! Bem-vinda ao Python 💗")</code></pre>
+      <p class="play__out"><span>Resultado:</span> <output id="play-out">Olá, Ana! Bem-vinda ao Python 💗</output></p>
+      <p class="play__note">Isso é uma simulação para você enxergar a ideia. Na aula 1 você faz isso de verdade, com a professora ao lado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOSEANE ============ -->
+<section class="sec sec--lime" id="joseane">
+  <div class="wrap">
+    <p class="pill pill--ink reveal">Conheça a Joseane</p>
+    <div class="jo">
+      <figure class="jo__photo reveal">
+        <img src="assets/img/joseane.jpg" width="360" height="467" alt="Joseane Lelis sorrindo, com blazer claro e blusa vermelha" loading="lazy">
+        <figcaption><b>Joseane Lelis</b><span>Criadora da comunidade GirlsTech</span></figcaption>
+      </figure>
+
+      <div class="jo__text">
+        <h2 class="reveal">A TI mudou a vida dela. <span class="hl-pink">Ela quer levar isso para você.</span></h2>
+
+        <ol class="timeline">
+          <li class="reveal"><b>Antes</b><p>Na pandemia, trabalhava como telemarketing: muito estresse, frustração e sem perspectiva. Estudou Meteorologia e se formou em Logística.</p></li>
+          <li class="reveal"><b>A virada</b><p>Entrou na TI como analista de suporte no TJ CE. Nas palavras dela: estava mais feliz, com salário melhor e perspectiva de melhorar de vida.</p></li>
+          <li class="reveal"><b>Hoje</b><p>A TI a levou à Superintendência da Polícia Federal em SP e ao escritório da Ford na América Latina. Hoje atua com tecnologia no Itaú.</p></li>
+        </ol>
+
+        <blockquote class="quote reveal">
+          “Um emprego digno é poder se proteger, cuidar de quem você ama e viver momentos melhores. E nós, mulheres, também merecemos essa autonomia.”
+          <cite>Joseane Lelis</cite>
+        </blockquote>
+
+        <div class="video video--horizontal reveal" id="video">
+          <p class="video__fallback">Carregando o vídeo…</p>
+          <noscript>Ative o JavaScript para ver o vídeo.</noscript>
+        </div>
+
+        <p class="disclaimer">Essa é a história da Joseane. Cada trajetória é diferente, e o Workshop não promete emprego, salário ou resultado. Promete aulas ao vivo, acolhimento e ferramentas para você dar o primeiro passo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MISSÃO / VISÃO / VALORES ============ -->
+<section class="sec sec--plum" id="proposito">
+  <div class="wrap">
+    <p class="pill pill--lime reveal">Nosso propósito</p>
+    <h2 class="reveal">O sonho por trás do <span class="hl-lime">PyStart</span></h2>
+
+    <blockquote class="dream reveal">
+      Trazer <strong>autonomia para mulheres através da tecnologia</strong>, dando ferramentas para que elas possam conquistar o mercado de trabalho ou empreender, e se tornarem livres.
+    </blockquote>
+
+    <div class="mv">
+      <article class="card card--white reveal">
+        <h3>Missão</h3>
+        <p>Dar a mulheres as ferramentas da tecnologia, começando pelo Python e num ambiente acolhedor, para que conquistem autonomia no mercado de trabalho ou no próprio negócio.</p>
+      </article>
+      <article class="card card--white reveal">
+        <h3>Visão</h3>
+        <p>Um mundo em que mais mulheres sejam livres e independentes por meio da tecnologia.</p>
+      </article>
+    </div>
+
+    <h3 class="sub reveal">Nossos valores</h3>
+    <ul class="values">
+      <li class="reveal"><b>Acolhimento</b><span>Ninguém precisa se sentir pequena para aprender.</span></li>
+      <li class="reveal"><b>Paciência</b><span>Cada dúvida importa, sem pergunta boba.</span></li>
+      <li class="reveal"><b>Coragem de errar</b><span>Erro é parte do caminho.</span></li>
+      <li class="reveal"><b>Autonomia</b><span>Ferramentas para a mulher decidir o próprio caminho.</span></li>
+      <li class="reveal"><b>Comunidade</b><span>Ninguém cresce sozinha.</span></li>
+      <li class="reveal"><b>Honestidade</b><span>A gente não promete o que não pode garantir.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ ESSA TURMA É PARA VOCÊ? ============ -->
+<section class="sec sec--white" id="para-voce">
+  <div class="wrap wrap--narrow">
+    <p class="pill pill--pink reveal">Antes de decidir</p>
+    <h2 class="reveal">Essa turma é <span class="hl-pink">para você?</span></h2>
+    <p class="sec__lead reveal">Marque o que combina com você. Queremos que você entre sabendo exatamente como é.</p>
+
+    <form class="qualifier card reveal" id="qualifier" onsubmit="return false">
+      <label class="check"><input type="checkbox" value="zero"><span>Quero começar do zero, sem precisar ter experiência.</span></label>
+      <label class="check"><input type="checkbox" value="live"><span>Consigo estar ao vivo às 19h30 (as aulas também <b>ficam gravadas</b>).</span></label>
+      <label class="check"><input type="checkbox" value="women"><span>Quero aprender num ambiente só de mulheres, sem medo de perguntar.</span></label>
+      <label class="check"><input type="checkbox" value="invest"><span>Consigo investir R$ 180 à vista (ou 2× de R$ 100 pelo WhatsApp).</span></label>
+
+      <p class="qualifier__out" id="qualifier-out" role="status" aria-live="polite">Marque o que combina com você.</p>
+      <div class="qualifier__cta" id="qualifier-cta">
+        <a class="btn btn--pink" data-qshow="pay" data-pay href="#garanta" hidden>Garanta sua vaga</a>
+        <a class="btn btn--pink" data-qshow="wa-espera" data-wa="espera" href="#garanta" hidden>Entrar na lista de espera</a>
+        <a class="btn btn--pink" data-qshow="wa-mensal" data-wa="mensal" href="#garanta" hidden>Pedir a vaga mensal no WhatsApp</a>
+        <a class="btn btn--pink" data-qshow="wa-geral" data-wa="geral" href="#garanta" hidden>Tirar dúvidas no WhatsApp</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ INVESTIMENTO ============ -->
+<section class="sec sec--pink" id="garanta">
+  <div class="wrap wrap--narrow">
+    <p class="pill pill--lime reveal">Seu investimento</p>
+    <h2 class="reveal">Garanta sua vaga na <span class="hl-lime">Turma 01</span></h2>
+
+    <div class="price card card--white reveal">
+      <p class="price__old">2 × R$ 100 = R$ 200</p>
+      <p class="price__now"><b>R$ 180</b> <span>à vista · 10% de desconto</span></p>
+      <p class="price__per">São só <b>R$ 22,50</b> por aula ao vivo (8 aulas).</p>
+
+      <ul class="ticklist">
+        <li>8 aulas ao vivo e online, com professoras atenciosas</li>
+        <li>Aulas de Git, GitHub e LinkedIn</li>
+        <li>Grupo de WhatsApp da turma</li>
+        <li>Turma de só 10 mulheres</li>
+      </ul>
+
+      <div class="seats seats--card" data-seats>
+        <div class="seats__bar" role="img" aria-label="Ocupação das vagas"><i data-seats-fill></i></div>
+        <p class="seats__txt" data-seats-text>—</p>
+      </div>
+
+      <a class="btn btn--pink btn--lg btn--block" data-pay data-when="open" href="#garanta">Garanta sua vaga</a>
+      <a class="btn btn--pink btn--lg btn--block" data-wa="espera" data-when="full" href="#garanta">Entrar na lista de espera</a>
+      <a class="btn btn--pink btn--lg btn--block" data-wa="geral" data-when="closed" href="#garanta">Falar no WhatsApp</a>
+      <p class="price__fine" data-when="open">Pagamento pela InfinitePay. A vaga é confirmada por ordem de pagamento.</p>
+
+      <div class="monthly" data-when="open full">
+        <p><b>Prefere pagar mensal?</b> O plano é de 2× de R$ 100. Peça a sua vaga mensal pelo WhatsApp.</p>
+        <a class="btn btn--ink" data-wa="mensal" href="#garanta">Pedir a vaga mensal</a>
+      </div>
+    </div>
+
+    <ul class="rules reveal">
+      <li><b>Ao vivo e gravado:</b> as aulas acontecem às 19h30 (horário de Brasília) e ficam gravadas.</li>
+      <li><b>Só mulheres:</b> a turma é exclusiva para mulheres.</li>
+      <li><b>10 vagas:</b> confirmadas por ordem de pagamento. Depois da 10ª pessoa, as próximas entram na lista de espera.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec sec--white" id="duvidas">
+  <div class="wrap wrap--narrow">
+    <p class="pill pill--pink reveal">Dúvidas comuns</p>
+    <h2 class="reveal">Perguntas <span class="hl-pink">frequentes</span></h2>
+
+    <div class="faq">
+      <details class="reveal"><summary>Nunca programei. Posso entrar?</summary><p>Pode. O PyStart é Python do zero e você não precisa saber nada antes.</p></details>
+      <details class="reveal"><summary>E se eu errar ou travar?</summary><p>Errar faz parte e ninguém vai achar isso incompetência. Se você travar, a professora abre a tela junto com você e ajuda até na configuração do ambiente. Não existe pergunta boba.</p></details>
+      <details class="reveal"><summary>As aulas ficam gravadas?</summary><p>Sim, as aulas ficam gravadas. Elas acontecem ao vivo, às 19h30 (horário de Brasília), e é ao vivo que você tira as dúvidas com a professora. Se tiver dúvida sobre como acessar as gravações, chame a gente no WhatsApp.</p></details>
+      <details class="reveal"><summary>Como eu pago? Dá para pagar mensal?</summary><p>À vista, são R$ 180 pelo botão “Garanta sua vaga”. Se preferir pagar mensal, em 2× de R$ 100, peça a sua vaga mensal pelo WhatsApp.</p></details>
+      <details class="reveal"><summary>O Workshop garante emprego?</summary><p>Não. A gente não promete emprego, salário nem resultado. Prometemos aulas ao vivo, acolhimento e ferramentas (Python, Git, GitHub e LinkedIn) para você dar o primeiro passo. Para onde ir depois é uma decisão sua.</p></details>
+      <details class="reveal"><summary>Quantas vagas existem e o que acontece quando acabam?</summary><p>São 10 vagas, confirmadas por ordem de pagamento. Depois da 10ª pessoa, as próximas entram na lista de espera.</p></details>
+      <details class="reveal"><summary>Homens podem participar?</summary><p>Não. A turma é exclusiva para mulheres.</p></details>
+    </div>
+
+    <p class="faq__more reveal">Ficou com outra dúvida? <a data-wa="geral" href="#garanta">Fale com a gente no WhatsApp</a>.</p>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="sec sec--ink final" id="final">
+  <div class="wrap wrap--narrow final__in">
+    <img src="assets/img/logo.png" width="120" height="120" alt="" loading="lazy">
+    <h2 class="reveal">E se a próxima história <span class="hl-lime">for a sua?</span></h2>
+    <p class="sec__lead reveal">A Turma 01 começa em 14/10, às 19h30. Quando as 10 vagas acabarem, a entrada é pela lista de espera.</p>
+
+    <div class="countdown countdown--dark" data-countdown>
+      <div><b data-cd="d">--</b><span>dias</span></div>
+      <div><b data-cd="h">--</b><span>horas</span></div>
+      <div><b data-cd="m">--</b><span>min</span></div>
+      <div><b data-cd="s">--</b><span>seg</span></div>
+    </div>
+    <div class="seats seats--dark" data-seats>
+      <div class="seats__bar" role="img" aria-label="Ocupação das vagas"><i data-seats-fill></i></div>
+      <p class="seats__txt" data-seats-text>—</p>
+    </div>
+
+    <div class="cta-row cta-row--center">
+      <a class="btn btn--lime btn--lg" data-pay data-when="open" href="#garanta">Garanta sua vaga</a>
+      <a class="btn btn--lime btn--lg" data-wa="espera" data-when="full" href="#garanta">Entrar na lista de espera</a>
+      <a class="btn btn--lime btn--lg" data-wa="geral" data-when="closed" href="#garanta">Falar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p><b>Workshop PyStart</b> · Turma 01 · Python básico para mulheres</p>
+    <p class="footer__small">Aulas ao vivo e online, com gravação. Turma exclusiva para mulheres.</p>
+  </div>
+</footer>
+
+<!-- Barra fixa no celular -->
+<div class="sticky" id="sticky" aria-hidden="true">
+  <p><b data-seats-text>—</b><span>Começa 14/10 às 19h30</span></p>
+  <a class="btn btn--sm btn--lime" data-pay data-when="open" href="#garanta" tabindex="-1">Garanta sua vaga</a>
+  <a class="btn btn--sm btn--lime" data-wa="espera" data-when="full" href="#garanta" tabindex="-1">Lista de espera</a>
+</div>
+
+<!-- Botão flutuante do WhatsApp -->
+<a class="wa-float" id="wa-float" data-wa="geral" href="#garanta" aria-label="Falar com a gente no WhatsApp">
+  <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="wa-float__tip">Fale com a gente</span>
+</a>
+
+<script src="config.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
