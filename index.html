@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <script>document.documentElement.classList.add("js");setTimeout(function(){document.documentElement.classList.add("reveal-all")},3500);</script>
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=3">
 </head>
 <body data-state="open">
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -46,7 +46,7 @@
     <div class="hero__text">
       <p class="proof">+ de 80 mulheres impactadas</p>
       <h1>A tecnologia também é <span class="hl">coisa de mulher.</span></h1>
-      <p class="lead">Python do zero em 8 aulas ao vivo, numa turma de só 10 mulheres. Sem precisar saber nada antes.</p>
+      <p class="lead">Python do zero, ao vivo, numa turma só de mulheres.</p>
 
       <div class="cta-row">
         <a class="btn btn--lime btn--lg" data-pay data-when="open" href="#garanta">Garanta sua vaga</a>
@@ -62,24 +62,6 @@
         <li>Sem experiência</li>
       </ul>
     </div>
-
-    <aside class="ticket card" aria-label="Resumo da turma">
-      <img class="ticket__logo" src="assets/img/logo.png" width="130" height="130" alt="Logo Workshop PyStart">
-      <p class="ticket__title">Turma 01 · Python básico</p>
-      <p class="ticket__date">Começa 14/10 às 19h30</p>
-      <div class="countdown" data-countdown>
-        <div><b data-cd="d">--</b><span>dias</span></div>
-        <div><b data-cd="h">--</b><span>horas</span></div>
-        <div><b data-cd="m">--</b><span>min</span></div>
-        <div><b data-cd="s">--</b><span>seg</span></div>
-      </div>
-      <p class="countdown__note" data-cd-note>para a primeira aula (14/10, 19h30)</p>
-
-      <div class="seats" data-seats>
-        <div class="seats__bar" role="img" aria-label="Ocupação das vagas"><i data-seats-fill></i></div>
-        <p class="seats__txt" data-seats-text>—</p>
-      </div>
-    </aside>
   </div>
 </section>
 
@@ -163,36 +145,28 @@ print(f"Olá, {nome}! Bem-vinda ao Python 💗")</code></pre>
   </div>
 </section>
 
-<!-- ============ PREÇO (antes da biografia) ============ -->
-<section class="sec sec--pink" id="preco">
-  <div class="wrap wrap--narrow">
-    <div class="offer card card--white reveal">
-      <p class="pill pill--ink">Turma 01 · Python básico</p>
-      <p class="offer__old">De <s>R$ 200</s></p>
-      <p class="offer__now"><span>por</span> <b>R$ 180</b> <span>à vista</span></p>
-      <p class="offer__save">10% de desconto · ou 2× de R$ 100</p>
-
-      <ul class="benefits">
-        <li>8 aulas ao vivo e online</li>
-        <li>Aulas gravadas para rever quando quiser</li>
-        <li>Professoras atenciosas e pacientes</li>
-        <li>Aulas de Git, GitHub e LinkedIn</li>
-        <li>Projeto integrador no final</li>
-        <li>Grupo de WhatsApp da turma</li>
-        <li>Turma de só 10 mulheres</li>
-        <li>Não precisa ter experiência</li>
-      </ul>
-
-      <a class="btn btn--pink btn--lg btn--block" data-pay data-when="open" href="#garanta">Garanta sua vaga</a>
-      <a class="btn btn--pink btn--lg btn--block" data-wa="espera" data-when="full" href="#garanta">Entrar na lista de espera</a>
-      <a class="btn btn--pink btn--lg btn--block" data-wa="geral" data-when="closed" href="#garanta">Falar no WhatsApp</a>
-    </div>
-  </div>
-</section>
-
 <!-- ============ JOSEANE ============ -->
 <section class="sec sec--lime" id="joseane">
   <div class="wrap">
+    <aside class="ticket card jo__ticket reveal" aria-label="Resumo da turma">
+      <img class="ticket__logo" src="assets/img/logo.png" width="130" height="130" alt="Logo Workshop PyStart" loading="lazy">
+      <p class="ticket__title">Turma 01 · Python básico</p>
+      <div class="countdown" data-countdown>
+        <div><b data-cd="d">--</b><span>dias</span></div>
+        <div><b data-cd="h">--</b><span>horas</span></div>
+        <div><b data-cd="m">--</b><span>min</span></div>
+        <div><b data-cd="s">--</b><span>seg</span></div>
+      </div>
+      <p class="countdown__note" data-cd-note>para a primeira aula (14/10, 19h30)</p>
+
+      <div class="seats" data-seats>
+        <div class="seats__bar" role="img" aria-label="Ocupação das vagas"><i data-seats-fill></i></div>
+        <p class="seats__txt" data-seats-text>—</p>
+      </div>
+
+      <p class="ticket__price"><s>R$ 200</s> <b>R$ 180</b> <span>à vista</span></p>
+    </aside>
+
     <p class="pill pill--ink reveal">Conheça a Joseane</p>
     <div class="jo">
       <figure class="jo__photo reveal">
@@ -392,6 +366,6 @@ print(f"Olá, {nome}! Bem-vinda ao Python 💗")</code></pre>
 </a>
 
 <script src="config.js"></script>
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=3"></script>
 </body>
 </html>
