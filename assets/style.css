@@ -68,19 +68,21 @@ h3{font-size:1.2rem;line-height:1.2}
 /* ---------- hero ---------- */
 .hero{background:var(--pink);color:#fff;padding:34px 0 64px;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:auto -20% -55% -20%;height:70%;background:var(--soft);border-radius:50%;opacity:.0}
-.hero__grid{display:grid;gap:34px;align-items:center}
-.hero h1{margin:6px 0 0;text-shadow:0 2px 0 rgba(20,16,28,.18)}
-.chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:26px 0 0;padding:0}
-.chips li{background:var(--ink);color:var(--lime);border-radius:999px;padding:7px 15px;font-weight:800;font-size:.9rem}
-.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.hero__grid{display:grid;gap:64px;justify-items:center}
+.hero__text{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
+.proof{display:inline-block;margin:0 0 14px;padding:4px 12px;border:2px solid rgba(255,255,255,.55);border-radius:999px;font-size:.78rem;font-weight:800;letter-spacing:.03em}
+.hero h1{margin:0;width:100%;max-width:92%;font-size:clamp(2.6rem,12vw,4.6rem);line-height:1.02;text-shadow:0 3px 0 rgba(20,16,28,.22)}
+.hero .lead{max-width:34ch;font-size:clamp(1rem,2.8vw,1.15rem);font-weight:500;line-height:1.45;margin:18px auto 0;opacity:.95}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;list-style:none;margin:22px 0 0;padding:0}
+.chips li{background:var(--ink);color:var(--lime);border-radius:999px;padding:5px 12px;font-weight:800;font-size:.8rem}
+.cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:26px}
+.hero .cta-row{width:100%}
 .cta-row--center{justify-content:center}
 
 .ticket{text-align:center;color:var(--ink);transform:rotate(-1.5deg);max-width:420px;margin:0 auto;width:100%;background:var(--cream)}
 .ticket__logo{margin:-64px auto 6px;border-radius:50%;border:var(--bw) solid var(--ink);background:var(--pink)}
-.ticket__title{font-weight:900;margin:6px 0 14px;font-size:1.1rem}
-.ticket__price{margin:16px 0 0;font-size:1.05rem}
-.ticket__price s{opacity:.6}
-.ticket__price b{font-size:2rem;color:var(--pink);font-weight:900}
+.ticket__title{font-weight:900;margin:6px 0 2px;font-size:1.1rem}
+.ticket__date{margin:0 0 14px;font-weight:700;font-size:.92rem}
 .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .countdown div{background:var(--ink);color:#fff;border-radius:14px;padding:10px 4px}
 .countdown b{display:block;font-size:clamp(1.5rem,6vw,2rem);color:var(--lime);font-variant-numeric:tabular-nums;line-height:1.1}
@@ -195,6 +197,20 @@ h3{font-size:1.2rem;line-height:1.2}
 .ticklist li{padding-left:34px;position:relative;margin:8px 0;font-weight:700}
 .ticklist li::before{content:"✓";position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:var(--lime);border:2px solid var(--ink);display:grid;place-items:center;font-size:.85rem;font-weight:900}
 .price .btn--block{margin-top:6px}
+
+/* oferta (antes da biografia) */
+.offer{color:var(--ink);text-align:center;padding:30px 22px}
+.offer .pill{margin-bottom:18px}
+.offer__old{margin:0;font-size:1.25rem;font-weight:700}
+.offer__old s{color:#E10600;font-weight:900;text-decoration-thickness:3px}
+.offer__now{margin:2px 0 4px;line-height:1;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:8px}
+.offer__now b{font-size:clamp(3.6rem,15vw,5.6rem);color:var(--pink);font-weight:900;letter-spacing:-.03em}
+.offer__now span{font-weight:800;font-size:1.05rem}
+.offer__save{margin:8px 0 22px;font-weight:700;font-size:.95rem}
+.benefits{list-style:none;padding:0;margin:0 auto 24px;text-align:left;display:grid;gap:10px;max-width:420px}
+.benefits li{position:relative;padding-left:34px;font-size:1rem;font-weight:700;line-height:1.35}
+.benefits li::before{content:"✓";position:absolute;left:0;top:-1px;width:24px;height:24px;border-radius:50%;background:var(--lime);border:2px solid var(--ink);display:grid;place-items:center;font-size:.85rem;font-weight:900}
+.offer .btn--block{margin-top:6px}
 .price__fine{margin:12px 0 0}
 .monthly{margin-top:22px;padding-top:18px;border-top:2px dashed var(--ink)}
 .monthly p{margin:0 0 12px}
@@ -255,10 +271,12 @@ body.sticky-on .wa-float{bottom:84px}
   .values{grid-template-columns:repeat(3,1fr)}
   .qualifier__cta{display:flex;flex-wrap:wrap}
   .jo{grid-template-columns:340px 1fr;align-items:start}
+  .hero h1{max-width:60%;font-size:clamp(2.8rem,6.6vw,4.8rem)}
+  .benefits{grid-template-columns:1fr 1fr;max-width:none;column-gap:22px}
 }
 @media (min-width:900px){
-  .hero{padding:56px 0 84px}
-  .hero__grid{grid-template-columns:1.15fr .85fr}
+  .hero{padding:64px 0 90px}
+  .hero h1{font-size:clamp(3.4rem,5.4vw,4.8rem)}
   .sticky{display:none}
   body.sticky-on .wa-float{bottom:16px}
   .footer{padding-bottom:40px}
@@ -266,7 +284,11 @@ body.sticky-on .wa-float{bottom:84px}
 @media (max-width:420px){
   .brand span{display:none}
   .btn--lg{width:100%}
-  .cta-row .btn{width:100%}
+  .cta-row .btn{width:100%;max-width:340px;padding:16px 14px;font-size:1.05rem}
+}
+@media (max-width:360px){
+  .hero h1{max-width:100%;font-size:11vw}
+  .cta-row .btn{font-size:.95rem}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
