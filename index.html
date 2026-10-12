@@ -18,8 +18,8 @@
 <meta property="og:image" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<script>document.documentElement.classList.add("js");setTimeout(function(){document.documentElement.classList.add("reveal-all")},3500);</script>
-<link rel="stylesheet" href="assets/style.css?v=3">
+<script>document.documentElement.classList.add("js");if(!location.hash&&(window.scrollY||0)<10)document.documentElement.classList.add("pre-scroll");setTimeout(function(){document.documentElement.classList.add("reveal-all")},3500);</script>
+<link rel="stylesheet" href="assets/style.css?v=35">
 </head>
 <body data-state="open">
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -65,12 +65,31 @@
   </div>
 </section>
 
+<!-- ============ QUAL O SEU MAIOR MEDO? ============ -->
+<section class="fears" id="medos">
+  <div class="wrap">
+    <div class="fears__box card reveal">
+      <p class="fears__pre">Para que a gente possa te ajudar de verdade,</p>
+      <p class="fears__q">quais medos têm te impedido de começar?</p>
+      <div class="pick" id="fears">
+        <label><input type="checkbox" value="errar"><span>Errar</span></label>
+        <label><input type="checkbox" value="não ser capaz"><span>Não ser capaz</span></label>
+        <label><input type="checkbox" value="ser julgada"><span>Ser julgada</span></label>
+        <label><input type="checkbox" value="começar tarde demais"><span>Começar tarde demais</span></label>
+        <label><input type="checkbox" value="não conseguir trabalho"><span>Não conseguir trabalho</span></label>
+        <label><input type="checkbox" value="não ter tempo"><span>Não ter tempo</span></label>
+        <label><input type="checkbox" value="não ser de exatas"><span>Não ser de exatas</span></label>
+        <label><input type="checkbox" value="ficar para trás"><span>Ficar para trás</span></label>
+      </div>    </div>
+  </div>
+</section>
+
 <!-- ============ PROBLEMA ============ -->
 <section class="sec sec--ink" id="problema">
   <div class="wrap">
     <p class="pill pill--lime reveal">O problema nunca foi você</p>
     <h2 class="reveal">Quando algo é novo, a voz de dentro diz: <span class="hl-lime">“isso não é pra mim”.</span></h2>
-    <p class="sec__lead reveal">Essa sensação tem nome: síndrome da impostora. Ela é mais comum do que parece. Veja o que mostrou uma pesquisa da KPMG com mais de 700 executivas dos EUA:</p>
+    <p class="sec__lead reveal"><strong class="hl-red">Nós entendemos você. Isso não é culpa sua.</strong> Essa sensação tem nome: síndrome da impostora. Ela é mais comum do que parece.</p>
 
     <div class="stats">
       <div class="stat card card--pink reveal">
@@ -82,17 +101,9 @@
         <p>já tiveram medo excessivo de falhar</p>
       </div>
     </div>
-    <p class="source">Fonte: KPMG, <em>Women’s Leadership Summit Report</em> (2020), com mais de 700 participantes do evento entre 2015 e 2019, executivas de empresas americanas. O dado não é sobre alunas brasileiras iniciantes.</p>
+    <p class="source">Fonte: KPMG, <em>Women’s Leadership Summit Report</em> (2020).</p>
 
     <p class="sec__lead sec__lead--big reveal">Na nossa visão, o que trava <strong>não é falta de capacidade</strong>. É falta de um ambiente onde errar seja permitido. Foi para criar esse ambiente que o PyStart existe.</p>
-
-    <h3 class="sub reveal">Mulheres que já mudaram a tecnologia</h3>
-    <ul class="pioneers">
-      <li class="reveal"><img src="assets/img/ada.jpg" width="120" height="120" alt="Retrato de Ada Lovelace" loading="lazy"><b>Ada Lovelace <em>1843</em></b><span>Escreveu o primeiro algoritmo da história.</span></li>
-      <li class="reveal"><img src="assets/img/hedy.jpg" width="120" height="120" alt="Retrato de Hedy Lamarr" loading="lazy"><b>Hedy Lamarr <em>1942</em></b><span>Patenteou o salto de frequências, que inspirou o Wi-Fi, o Bluetooth e o GPS.</span></li>
-      <li class="reveal"><img src="assets/img/grace.jpg" width="120" height="120" alt="Retrato de Grace Hopper" loading="lazy"><b>Grace Hopper <em>1952</em></b><span>Criou o primeiro compilador e ajudou a criar o COBOL.</span></li>
-      <li class="reveal"><img src="assets/img/margaret.jpg" width="120" height="120" alt="Retrato de Margaret Hamilton" loading="lazy"><b>Margaret Hamilton <em>1969</em></b><span>Liderou a equipe do software de bordo da Apollo 11.</span></li>
-    </ul>
   </div>
 </section>
 
@@ -128,19 +139,49 @@
       <li class="card reveal"><span>5</span>Dicionários e sets</li>
       <li class="card reveal"><span>6</span>Funções</li>
       <li class="card reveal"><span>7</span>Tratamento de erros e arquivos</li>
-      <li class="card card--pink reveal"><span>8</span>Projeto integrador</li>
+      <li class="card reveal"><span>8</span>Projeto integrador</li>
     </ol>
     <p class="extra card card--lime reveal"><b>Também no curso:</b> aulas de Git, GitHub e LinkedIn.</p>
 
     <div class="play card reveal" id="play">
       <p class="pill pill--ink">Teste na hora</p>
-      <h3>Veja como é ler o seu primeiro código</h3>
-      <label for="play-name">Digite seu nome:</label>
-      <input id="play-name" type="text" maxlength="20" autocomplete="off" placeholder="Seu nome">
-      <pre class="code" aria-live="polite"><code id="play-code">nome = "Ana"
-print(f"Olá, {nome}! Bem-vinda ao Python 💗")</code></pre>
-      <p class="play__out"><span>Resultado:</span> <output id="play-out">Olá, Ana! Bem-vinda ao Python 💗</output></p>
-      <p class="play__note">Isso é uma simulação para você enxergar a ideia. Na aula 1 você faz isso de verdade, com a professora ao lado.</p>
+
+      <div class="play__fields">
+        <label>Seu nome
+          <input id="play-name" type="text" maxlength="16" autocomplete="off" placeholder="Ana">
+        </label>
+        <label>Profissão dos sonhos
+          <select id="play-job">
+            <option value="" selected>Selecione…</option>
+            <option>Desenvolvedora</option>
+            <option>Cientista de dados</option>
+            <option>Analista de dados</option>
+            <option>Engenheira de software</option>
+            <option>Designer de produto</option>
+          </select>
+        </label>
+        <label class="play__dream">Seu sonho
+          <input id="play-dream" type="text" maxlength="80" autocomplete="off" placeholder="Ex.: sustentar meus filhos">
+          <small class="play__count" id="play-dream-count">0/80</small>
+        </label>
+      </div>
+
+
+      <pre class="code"><code id="play-code"></code></pre>
+
+      <button class="btn btn--pink btn--block" id="play-run" type="button">▶ Rodar meu código</button>
+
+      <div class="game" id="play-game" tabindex="0" aria-label="Jogo: toque ou aperte espaço para pular">
+        <canvas id="play-canvas"></canvas>
+        <p class="game__hint" id="play-hint">Toque aqui (ou aperte espaço) para pular</p>
+      </div>
+
+      <div class="term">
+        <div class="term__bar" aria-hidden="true"><i></i><i></i><i></i><span>saída do programa</span></div>
+        <div class="term__body" id="play-out" role="log" aria-live="polite"><span class="term__dim">Aperte “Rodar meu código” para ver o resultado.</span></div>
+      </div>
+
+      <p class="play__note">Isso é uma simulação para você enxergar a ideia. Na aula 1 você escreve código de verdade, com a professora ao lado.</p>
     </div>
   </div>
 </section>
@@ -148,29 +189,32 @@ print(f"Olá, {nome}! Bem-vinda ao Python 💗")</code></pre>
 <!-- ============ JOSEANE ============ -->
 <section class="sec sec--lime" id="joseane">
   <div class="wrap">
-    <aside class="ticket card jo__ticket reveal" aria-label="Resumo da turma">
+    <aside class="ticket card jo__ticket reveal" id="garanta" aria-label="Resumo da turma">
       <img class="ticket__logo" src="assets/img/logo.png" width="130" height="130" alt="Logo Workshop PyStart" loading="lazy">
-      <p class="ticket__title">Turma 01 · Python básico</p>
-      <div class="countdown" data-countdown>
-        <div><b data-cd="d">--</b><span>dias</span></div>
-        <div><b data-cd="h">--</b><span>horas</span></div>
-        <div><b data-cd="m">--</b><span>min</span></div>
-        <div><b data-cd="s">--</b><span>seg</span></div>
-      </div>
-      <p class="countdown__note" data-cd-note>para a primeira aula (14/10, 19h30)</p>
+      <p class="ticket__title">Turma Python básico</p>
+      <ul class="ticket__perks">
+        <li>8 aulas ao vivo e online</li>
+        <li>Professoras atenciosas</li>
+        <li>Aulas de Git, GitHub e LinkedIn</li>
+        <li>Grupo de WhatsApp da turma</li>
+        <li>Turma de só 10 mulheres</li>
+      </ul>
 
-      <div class="seats" data-seats>
-        <div class="seats__bar" role="img" aria-label="Ocupação das vagas"><i data-seats-fill></i></div>
-        <p class="seats__txt" data-seats-text>—</p>
-      </div>
+      <p class="ticket__limited">Vagas limitadas</p>
 
-      <p class="ticket__price"><s>R$ 200</s> <b>R$ 180</b> <span>à vista</span></p>
+      <p class="ticket__price"><s>R$ 200</s> <span class="ticket__now"><b>R$ 180</b><em>à vista</em></span></p>
     </aside>
 
     <p class="pill pill--ink reveal">Conheça a Joseane</p>
     <div class="jo">
       <figure class="jo__photo reveal">
-        <img src="assets/img/joseane.jpg" width="360" height="467" alt="Joseane Lelis sorrindo, com blazer claro e blusa vermelha" loading="lazy">
+        <div class="jo__media" id="video">
+          <img src="assets/img/joseane.jpg" width="360" height="467" alt="Joseane Lelis sorrindo, com blazer claro e blusa vermelha" loading="lazy">
+          <button class="jo__play" id="video-play" type="button" hidden aria-label="Assistir ao vídeo da Joseane">
+            <span class="jo__play-ic" aria-hidden="true"></span>
+            <span class="jo__play-txt">Assistir vídeo</span>
+          </button>
+        </div>
         <figcaption><b>Joseane Lelis</b><span>Criadora da comunidade GirlsTech</span></figcaption>
       </figure>
 
@@ -188,12 +232,7 @@ print(f"Olá, {nome}! Bem-vinda ao Python 💗")</code></pre>
           <cite>Joseane Lelis</cite>
         </blockquote>
 
-        <div class="video video--horizontal reveal" id="video">
-          <p class="video__fallback">Carregando o vídeo…</p>
-          <noscript>Ative o JavaScript para ver o vídeo.</noscript>
-        </div>
 
-        <p class="disclaimer">Essa é a história da Joseane. Cada trajetória é diferente, e o Workshop não promete emprego, salário ou resultado. Promete aulas ao vivo, acolhimento e ferramentas para você dar o primeiro passo.</p>
       </div>
     </div>
   </div>
@@ -212,11 +251,11 @@ print(f"Olá, {nome}! Bem-vinda ao Python 💗")</code></pre>
     <div class="mv">
       <article class="card card--white reveal">
         <h3>Missão</h3>
-        <p>Dar a mulheres as ferramentas da tecnologia, começando pelo Python e num ambiente acolhedor, para que conquistem autonomia no mercado de trabalho ou no próprio negócio.</p>
+        <p id="mv-missao">Dar a mulheres as ferramentas da tecnologia, começando pelo Python e num ambiente acolhedor, para que conquistem autonomia no mercado de trabalho ou no próprio negócio.</p>
       </article>
       <article class="card card--white reveal">
         <h3>Visão</h3>
-        <p>Um mundo em que mais mulheres sejam livres e independentes por meio da tecnologia.</p>
+        <p id="mv-visao">Um mundo em que mais mulheres sejam livres e independentes por meio da tecnologia.</p>
       </article>
     </div>
 
@@ -228,72 +267,6 @@ print(f"Olá, {nome}! Bem-vinda ao Python 💗")</code></pre>
       <li class="reveal"><b>Autonomia</b><span>Ferramentas para a mulher decidir o próprio caminho.</span></li>
       <li class="reveal"><b>Comunidade</b><span>Ninguém cresce sozinha.</span></li>
       <li class="reveal"><b>Honestidade</b><span>A gente não promete o que não pode garantir.</span></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============ ESSA TURMA É PARA VOCÊ? ============ -->
-<section class="sec sec--white" id="para-voce">
-  <div class="wrap wrap--narrow">
-    <p class="pill pill--pink reveal">Antes de decidir</p>
-    <h2 class="reveal">Essa turma é <span class="hl-pink">para você?</span></h2>
-    <p class="sec__lead reveal">Marque o que combina com você. Queremos que você entre sabendo exatamente como é.</p>
-
-    <form class="qualifier card reveal" id="qualifier" onsubmit="return false">
-      <label class="check"><input type="checkbox" value="zero"><span>Quero começar do zero, sem precisar ter experiência.</span></label>
-      <label class="check"><input type="checkbox" value="live"><span>Consigo estar ao vivo às 19h30 (as aulas também <b>ficam gravadas</b>).</span></label>
-      <label class="check"><input type="checkbox" value="women"><span>Quero aprender num ambiente só de mulheres, sem medo de perguntar.</span></label>
-      <label class="check"><input type="checkbox" value="invest"><span>Consigo investir R$ 180 à vista (ou 2× de R$ 100 pelo WhatsApp).</span></label>
-
-      <p class="qualifier__out" id="qualifier-out" role="status" aria-live="polite">Marque o que combina com você.</p>
-      <div class="qualifier__cta" id="qualifier-cta">
-        <a class="btn btn--pink" data-qshow="pay" data-pay href="#garanta" hidden>Garanta sua vaga</a>
-        <a class="btn btn--pink" data-qshow="wa-espera" data-wa="espera" href="#garanta" hidden>Entrar na lista de espera</a>
-        <a class="btn btn--pink" data-qshow="wa-mensal" data-wa="mensal" href="#garanta" hidden>Pedir a vaga mensal no WhatsApp</a>
-        <a class="btn btn--pink" data-qshow="wa-geral" data-wa="geral" href="#garanta" hidden>Tirar dúvidas no WhatsApp</a>
-      </div>
-    </form>
-  </div>
-</section>
-
-<!-- ============ INVESTIMENTO ============ -->
-<section class="sec sec--pink" id="garanta">
-  <div class="wrap wrap--narrow">
-    <p class="pill pill--lime reveal">Seu investimento</p>
-    <h2 class="reveal">Garanta sua vaga na <span class="hl-lime">Turma 01</span></h2>
-
-    <div class="price card card--white reveal">
-      <p class="price__old">2 × R$ 100 = R$ 200</p>
-      <p class="price__now"><b>R$ 180</b> <span>à vista · 10% de desconto</span></p>
-      <p class="price__per">São só <b>R$ 22,50</b> por aula ao vivo (8 aulas).</p>
-
-      <ul class="ticklist">
-        <li>8 aulas ao vivo e online, com professoras atenciosas</li>
-        <li>Aulas de Git, GitHub e LinkedIn</li>
-        <li>Grupo de WhatsApp da turma</li>
-        <li>Turma de só 10 mulheres</li>
-      </ul>
-
-      <div class="seats seats--card" data-seats>
-        <div class="seats__bar" role="img" aria-label="Ocupação das vagas"><i data-seats-fill></i></div>
-        <p class="seats__txt" data-seats-text>—</p>
-      </div>
-
-      <a class="btn btn--pink btn--lg btn--block" data-pay data-when="open" href="#garanta">Garanta sua vaga</a>
-      <a class="btn btn--pink btn--lg btn--block" data-wa="espera" data-when="full" href="#garanta">Entrar na lista de espera</a>
-      <a class="btn btn--pink btn--lg btn--block" data-wa="geral" data-when="closed" href="#garanta">Falar no WhatsApp</a>
-      <p class="price__fine" data-when="open">Pagamento pela InfinitePay. A vaga é confirmada por ordem de pagamento.</p>
-
-      <div class="monthly" data-when="open full">
-        <p><b>Prefere pagar mensal?</b> O plano é de 2× de R$ 100. Peça a sua vaga mensal pelo WhatsApp.</p>
-        <a class="btn btn--ink" data-wa="mensal" href="#garanta">Pedir a vaga mensal</a>
-      </div>
-    </div>
-
-    <ul class="rules reveal">
-      <li><b>Ao vivo e gravado:</b> as aulas acontecem às 19h30 (horário de Brasília) e ficam gravadas.</li>
-      <li><b>Só mulheres:</b> a turma é exclusiva para mulheres.</li>
-      <li><b>10 vagas:</b> confirmadas por ordem de pagamento. Depois da 10ª pessoa, as próximas entram na lista de espera.</li>
     </ul>
   </div>
 </section>
@@ -349,6 +322,8 @@ print(f"Olá, {nome}! Bem-vinda ao Python 💗")</code></pre>
   <div class="wrap">
     <p><b>Workshop PyStart</b> · Turma 01 · Python básico para mulheres</p>
     <p class="footer__small">Aulas ao vivo e online, com gravação. Turma exclusiva para mulheres.</p>
+    <p class="footer__small">CNPJ: 57.581.759/0001-22</p>
+    <p class="footer__small footer__note">Cada trajetória é diferente, e o Workshop não promete emprego, salário ou resultado. Promete aulas ao vivo, acolhimento e ferramentas para você dar o primeiro passo.</p>
   </div>
 </footer>
 
@@ -359,6 +334,15 @@ print(f"Olá, {nome}! Bem-vinda ao Python 💗")</code></pre>
   <a class="btn btn--sm btn--lime" data-wa="espera" data-when="full" href="#garanta" tabindex="-1">Lista de espera</a>
 </div>
 
+<!-- Vídeo da Joseane em tela cheia (abre pelo botão "Assistir vídeo") -->
+<div class="vmodal" id="vmodal" hidden role="dialog" aria-modal="true" aria-label="Vídeo da Joseane Lelis">
+  <canvas class="vmodal__rain" id="vrain" aria-hidden="true"></canvas>
+  <button class="vmodal__x" id="vmodal-x" type="button" aria-label="Fechar vídeo">✕</button>
+  <div class="vmodal__frame" id="vmodal-frame">
+    <button class="vmodal__tap" id="vmodal-tap" type="button" aria-label="Pausar ou continuar o vídeo"><span class="vmodal__paused" aria-hidden="true"></span></button>
+  </div>
+</div>
+
 <!-- Botão flutuante do WhatsApp -->
 <a class="wa-float" id="wa-float" data-wa="geral" href="#garanta" aria-label="Falar com a gente no WhatsApp">
   <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -366,6 +350,6 @@ print(f"Olá, {nome}! Bem-vinda ao Python 💗")</code></pre>
 </a>
 
 <script src="config.js"></script>
-<script src="assets/app.js?v=3"></script>
+<script src="assets/app.js?v=33"></script>
 </body>
 </html>
