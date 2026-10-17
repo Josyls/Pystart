@@ -397,5 +397,4 @@ body.sticky-on .wa-float{bottom:80px}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .reveal{opacity:1;transform:none}
-  .hero__sound{display:none}
 }

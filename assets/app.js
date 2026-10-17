@@ -682,76 +682,76 @@
   }
 
   /* ---------- Vídeo de fundo do hero ----------
-     1ª volta com som (se o navegador deixar), depois segue em loop sem som,
+     Começa SEMPRE mudo (é o único jeito que todo celular deixa tocar sozinho: autoplay + muted + playsinline no HTML).
+     O som liga no 1º toque da visitante durante a 1ª volta; da 2ª volta em diante fica mudo,
      com o botão no cantinho para ligar de novo. */
   var hv = $("#hero-video"), hs = $("#hero-sound");
   if (hv && hs) {
-    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var saveData = navigator.connection && navigator.connection.saveData;
-    if (reduce || saveData) {
-      // fica só a imagem de capa: sem movimento e sem gastar dados
-      hv.removeAttribute("preload");
-    } else {
-      var firstLoop = true, userChose = false, inView = true, modalOpen = false;
-      var syncBtn = function () {
-        var on = !hv.muted;
-        hs.setAttribute("aria-pressed", on ? "true" : "false");
-        hs.setAttribute("aria-label", on ? "Desligar o som do vídeo" : "Ligar o som do vídeo");
-        $(".hero__sound-txt", hs).textContent = on ? "Desligar som" : "Ligar som";
-      };
-      var play = function () {
-        var p = hv.play();
-        if (p && p.catch) p.catch(function () {});
-        return p;
-      };
-      var setSound = function (on) { hv.muted = !on; syncBtn(); };
-
-      // tenta começar com som; a maioria dos navegadores bloqueia, então cai para mudo
-      hv.muted = false;
-      var first = hv.play();
-      if (first && first.catch) {
-        first.then(syncBtn).catch(function () { hv.muted = true; syncBtn(); play(); });
-      } else { syncBtn(); }
-      hs.hidden = false;
-
-      // som bloqueado na 1ª volta: liga no primeiro toque/clique da visitante na página
-      var unlock = function (e) {
-        if (e && hs.contains(e.target)) return;
-        document.removeEventListener("pointerdown", unlock, true);
-        document.removeEventListener("keydown", unlock, true);
-        if (firstLoop && !userChose && !modalOpen && hv.muted) setSound(true);
-      };
-      document.addEventListener("pointerdown", unlock, true);
-      document.addEventListener("keydown", unlock, true);
-
-      // fim de cada volta: a partir da 2ª, sem som (a não ser que ela tenha ligado no botão)
-      hv.addEventListener("ended", function () {
-        if (firstLoop) { firstLoop = false; if (!userChose) setSound(false); }
-        hv.currentTime = 0;
-        if (inView && !modalOpen) play();
+    var firstLoop = true, userChose = false, inView = true, modalOpen = false, lastT = 0;
+    hv.muted = true; hv.defaultMuted = true; hv.playsInline = true;
+    var syncBtn = function () {
+      var on = !hv.muted;
+      hs.setAttribute("aria-pressed", on ? "true" : "false");
+      hs.setAttribute("aria-label", on ? "Desligar o som do vídeo" : "Ligar o som do vídeo");
+      $(".hero__sound-txt", hs).textContent = on ? "Desligar som" : "Ligar som";
+    };
+    var shouldPlay = function () { return inView && !modalOpen && !document.hidden; };
+    var play = function () {
+      if (!hv.paused) return;
+      var p = hv.play();
+      if (p && p.catch) p.catch(function () {
+        // se o navegador recusar (ex.: com som), tenta de novo mudo
+        if (!hv.muted) { hv.muted = true; syncBtn(); hv.play().catch(function () {}); }
       });
+    };
+    var setSound = function (on) { hv.muted = !on; syncBtn(); if (on) play(); };
+    syncBtn();
+    hs.hidden = false;
+    play();
+    // garante o início assim que houver dados suficientes (internet lenta)
+    ["loadeddata", "canplay"].forEach(function (ev) { hv.addEventListener(ev, function () { if (shouldPlay()) play(); }); });
 
-      hs.addEventListener("click", function () {
-        userChose = true;
-        setSound(hv.muted);
-        if (hv.paused) play();
-      });
+    // 1º toque/clique: liga o som (se ainda na 1ª volta) e destrava o vídeo em modo economia de bateria
+    var unlock = function (e) {
+      if (e && hs.contains(e.target)) return;
+      document.removeEventListener("pointerdown", unlock, true);
+      document.removeEventListener("touchstart", unlock, true);
+      document.removeEventListener("keydown", unlock, true);
+      if (firstLoop && !userChose && !modalOpen && hv.muted) setSound(true);
+      else if (shouldPlay()) play();
+    };
+    document.addEventListener("pointerdown", unlock, true);
+    document.addEventListener("touchstart", unlock, { capture: true, passive: true });
+    document.addEventListener("keydown", unlock, true);
 
-      // pausa quando o hero sai da tela (economiza bateria e não toca som escondido)
-      if ("IntersectionObserver" in window) {
-        new IntersectionObserver(function (entries) {
-          inView = entries[0].isIntersecting;
-          if (inView && !modalOpen) play(); else hv.pause();
-        }, { threshold: 0.15 }).observe($("#topo"));
-      }
+    // loop nativo (atributo loop): detecta a virada da 1ª volta pelo tempo voltando ao início
+    hv.addEventListener("timeupdate", function () {
+      var t = hv.currentTime;
+      if (firstLoop && t + 1 < lastT) { firstLoop = false; if (!userChose) setSound(false); }
+      lastT = t;
+    });
 
-      // vídeo da Joseane aberto: o de fundo pausa
-      if (vmodal && "MutationObserver" in window) {
-        new MutationObserver(function () {
-          modalOpen = !vmodal.hidden;
-          if (modalOpen) hv.pause(); else if (inView) play();
-        }).observe(vmodal, { attributes: true, attributeFilter: ["hidden"] });
-      }
+    hs.addEventListener("click", function () {
+      userChose = true;
+      setSound(hv.muted);
+    });
+
+    // pausa fora da tela; retoma ao voltar (inclusive quando a pessoa volta de outro app)
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        inView = entries[0].isIntersecting;
+        if (shouldPlay()) play(); else hv.pause();
+      }, { threshold: 0.15 }).observe($("#topo"));
+    }
+    document.addEventListener("visibilitychange", function () { if (shouldPlay()) play(); });
+    window.addEventListener("pageshow", function () { if (shouldPlay()) play(); });
+
+    // vídeo da Joseane aberto: o de fundo pausa
+    if (vmodal && "MutationObserver" in window) {
+      new MutationObserver(function () {
+        modalOpen = !vmodal.hidden;
+        if (modalOpen) hv.pause(); else if (shouldPlay()) play();
+      }).observe(vmodal, { attributes: true, attributeFilter: ["hidden"] });
     }
   }
 })();
