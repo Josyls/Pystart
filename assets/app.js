@@ -707,7 +707,26 @@
     var setSound = function (on) { hv.muted = !on; syncBtn(); if (on) play(); };
     syncBtn();
     hs.hidden = false;
-    play();
+
+    // Reserva: se o celular bloquear o vídeo automático (iPhone em Modo de Pouca Energia), mostra a imagem animada,
+    // que roda mesmo assim. Quando o vídeo começar de verdade (ex.: depois de um toque), a imagem sai.
+    var ha = $("#hero-anim");
+    var showAnim = function () {
+      if (!ha || !hv.paused || !ha.hidden) return;
+      if (!ha.src) ha.src = ha.getAttribute("data-src");
+      ha.hidden = false;
+      hv.style.visibility = "hidden";
+    };
+    hv.addEventListener("playing", function () {
+      hv.style.visibility = "";
+      if (ha) ha.hidden = true;
+    });
+    var tryStart = hv.play();
+    if (tryStart && tryStart.catch) tryStart.catch(function (err) {
+      if (err && err.name === "NotAllowedError") showAnim();
+    });
+    // rede lenta ou bloqueio silencioso: se em 2,5 s o vídeo não começou, entra a imagem animada
+    setTimeout(function () { if (hv.paused && shouldPlay()) showAnim(); }, 2500);
     // garante o início assim que houver dados suficientes (internet lenta)
     ["loadeddata", "canplay"].forEach(function (ev) { hv.addEventListener(ev, function () { if (shouldPlay()) play(); }); });
 

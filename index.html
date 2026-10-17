@@ -46,6 +46,8 @@
     <video class="hero__video" id="hero-video" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" poster="assets/video/hero-poster.jpg">
       <source src="assets/video/hero.mp4" type="video/mp4">
     </video>
+    <!-- reserva para quando o celular bloqueia vídeo automático (ex.: iPhone em Modo de Pouca Energia): imagem animada roda mesmo assim -->
+    <img class="hero__video hero__anim" id="hero-anim" alt="" hidden data-src="assets/video/hero-anim.webp">
   </div>
   <button class="hero__sound" id="hero-sound" type="button" aria-pressed="false" aria-label="Ligar o som do vídeo" hidden>
     <svg class="hero__sound-on" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
@@ -344,6 +346,6 @@
 </a>
 
 <script src="config.js?v=2"></script>
-<script src="assets/app.js?v=41"></script>
+<script src="assets/app.js?v=42"></script>
 </body>
 </html>
