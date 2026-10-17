@@ -17,7 +17,7 @@ window.PYSTART = {
 
   // Início da turma (horário de Brasília, -03:00). Depois dessa hora a página
   // mostra "inscrições encerradas" sozinha.
-  inicio: "2026-10-14T19:30:00-03:00",
+  inicio: "2026-11-28T19:30:00-03:00",
 
   // Vídeo da Joseane (ID do YouTube)
   videoId: "iN0o5PjTey0",

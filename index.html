@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Workshop PyStart – Python do zero, só para mulheres (Turma 01)</title>
-<meta name="description" content="8 aulas ao vivo e online de Python do zero, só para mulheres. Turma de 10, professoras pacientes, aulas de Git, GitHub e LinkedIn. Começa em 14/10, às 19h30.">
+<meta name="description" content="8 aulas ao vivo e online de Python do zero, só para mulheres. Turma de 10, professoras pacientes, aulas de Git, GitHub e LinkedIn. Começa em 28/11, às 19h30.">
 <meta name="theme-color" content="#F5038B">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 
@@ -13,13 +13,13 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Workshop PyStart – Python do zero, só para mulheres">
-<meta property="og:description" content="8 aulas ao vivo, turma de 10 mulheres, professoras pacientes. Começa em 14/10 às 19h30.">
+<meta property="og:description" content="8 aulas ao vivo, turma de 10 mulheres, professoras pacientes. Começa em 28/11 às 19h30.">
 <meta property="og:url" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/">
 <meta property="og:image" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <script>document.documentElement.classList.add("js");if(!location.hash&&(window.scrollY||0)<10)document.documentElement.classList.add("pre-scroll");setTimeout(function(){document.documentElement.classList.add("reveal-all")},3500);</script>
-<link rel="stylesheet" href="assets/style.css?v=35">
+<link rel="stylesheet" href="assets/style.css?v=61">
 </head>
 <body data-state="open">
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -42,6 +42,16 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="topo">
+  <div class="hero__bg" aria-hidden="true">
+    <video class="hero__video" id="hero-video" muted playsinline preload="auto" poster="assets/video/hero-poster.jpg">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <button class="hero__sound" id="hero-sound" type="button" aria-pressed="false" aria-label="Ligar o som do vídeo" hidden>
+    <svg class="hero__sound-on" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
+    <svg class="hero__sound-off" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.6 3 2.7-2.7-1.4-1.4-2.7 2.7-2.7-2.7-1.4 1.4 2.7 2.7-2.7 2.7 1.4 1.4 2.7-2.7 2.7 2.7 1.4-1.4L16.6 12z"/></svg>
+    <span class="hero__sound-txt">Ligar som</span>
+  </button>
   <div class="wrap hero__grid">
     <div class="hero__text">
       <p class="proof">+ de 80 mulheres impactadas</p>
@@ -49,10 +59,10 @@
       <p class="lead">Python do zero, ao vivo, numa turma só de mulheres.</p>
 
       <div class="cta-row">
-        <a class="btn btn--lime btn--lg" data-pay data-when="open" href="#garanta">Garanta sua vaga</a>
+        <a class="btn btn--lime btn--lg btn--cta" data-pay data-when="open" href="#garanta">Garanta sua vaga</a>
         <a class="btn btn--lime btn--lg" data-wa="espera" data-when="full" href="#garanta">Entrar na lista de espera</a>
         <a class="btn btn--lime btn--lg" data-wa="geral" data-when="closed" href="#garanta">Falar no WhatsApp</a>
-        <a class="btn btn--ghost btn--lg" data-wa="geral" data-when="open full" href="#garanta">Tirar dúvidas no WhatsApp</a>
+        <a class="btn btn--quiet" data-wa="geral" data-when="open full" href="#garanta">Tirar dúvidas no WhatsApp</a>
       </div>
 
       <ul class="chips" aria-label="Resumo">
@@ -71,32 +81,40 @@
     <div class="fears__box card reveal">
       <p class="fears__pre">Para que a gente possa te ajudar de verdade,</p>
       <p class="fears__q">quais medos têm te impedido de começar?</p>
-      <div class="pick" id="fears">
-        <label><input type="checkbox" value="errar"><span>Errar</span></label>
-        <label><input type="checkbox" value="não ser capaz"><span>Não ser capaz</span></label>
-        <label><input type="checkbox" value="ser julgada"><span>Ser julgada</span></label>
-        <label><input type="checkbox" value="começar tarde demais"><span>Começar tarde demais</span></label>
-        <label><input type="checkbox" value="não conseguir trabalho"><span>Não conseguir trabalho</span></label>
-        <label><input type="checkbox" value="não ter tempo"><span>Não ter tempo</span></label>
-        <label><input type="checkbox" value="não ser de exatas"><span>Não ser de exatas</span></label>
-        <label><input type="checkbox" value="ficar para trás"><span>Ficar para trás</span></label>
-      </div>    </div>
+      <div class="msel" id="fears-sel">
+        <button class="msel__btn" id="fears-btn" type="button" aria-expanded="false" aria-controls="fears">
+          <span class="msel__val" id="fears-val">Selecione seus medos</span>
+          <span class="msel__arrow" aria-hidden="true"></span>
+        </button>
+        <div class="msel__list" id="fears" role="group" aria-label="Medos que têm te impedido de começar" hidden>
+          <label><input type="checkbox" value="errar"><span>Errar</span></label>
+          <label><input type="checkbox" value="não ser capaz"><span>Não ser capaz</span></label>
+          <label><input type="checkbox" value="ser julgada"><span>Ser julgada</span></label>
+          <label><input type="checkbox" value="começar tarde demais"><span>Começar tarde demais</span></label>
+          <label><input type="checkbox" value="não conseguir trabalho"><span>Não conseguir trabalho</span></label>
+          <label><input type="checkbox" value="não ter tempo"><span>Não ter tempo</span></label>
+          <label><input type="checkbox" value="não ser de exatas"><span>Não ser de exatas</span></label>
+          <label><input type="checkbox" value="ficar para trás"><span>Ficar para trás</span></label>
+          <button class="btn btn--sm btn--pink msel__ok" id="fears-ok" type="button">Pronto</button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ============ PROBLEMA ============ -->
-<section class="sec sec--ink" id="problema">
+<section class="sec sec--white" id="problema">
   <div class="wrap">
-    <p class="pill pill--lime reveal">O problema nunca foi você</p>
-    <h2 class="reveal">Quando algo é novo, a voz de dentro diz: <span class="hl-lime">“isso não é pra mim”.</span></h2>
+    <p class="pill reveal">O problema nunca foi você</p>
+    <h2 class="reveal">Quando algo é novo, a voz de dentro diz: <span class="hl-pink">“isso não é pra mim”.</span></h2>
     <p class="sec__lead reveal"><strong class="hl-red">Nós entendemos você. Isso não é culpa sua.</strong> Essa sensação tem nome: síndrome da impostora. Ela é mais comum do que parece.</p>
 
     <div class="stats">
-      <div class="stat card card--pink reveal">
+      <div class="stat card reveal">
         <b>75%</b>
         <p>já sentiram síndrome da impostora em algum momento da carreira</p>
       </div>
-      <div class="stat card card--pink reveal">
+      <div class="stat card reveal">
         <b>58%</b>
         <p>já tiveram medo excessivo de falhar</p>
       </div>
@@ -108,26 +126,25 @@
 </section>
 
 <!-- ============ METODOLOGIA ============ -->
-<section class="sec sec--soft" id="metodologia">
+<section class="sec sec--blush" id="metodologia">
   <div class="wrap">
-    <p class="pill pill--ink reveal">Nossa metodologia</p>
+    <p class="pill reveal">Nossa metodologia</p>
     <h2 class="reveal">Um jeito de ensinar <span class="hl-pink">pensado para mulheres.</span></h2>
-    <p class="sec__lead reveal">Professoras atenciosas, pacientes e acolhedoras, que ajudam a destravar quem está começando. São 5 pilares:</p>
+    <p class="sec__lead reveal">Professoras atenciosas, pacientes e acolhedoras, que ajudam a destravar quem está começando. São 4 pilares:</p>
 
     <div class="grid grid--5">
       <article class="card reveal"><span class="num">1</span><h3>Ambiente seguro: errar faz parte</h3><p>Aqui errar não é incompetência. Erro é etapa de quem constrói código.</p></article>
       <article class="card reveal"><span class="num">2</span><h3>Paciência real: sem pergunta boba</h3><p>Todas são ouvidas. Se você travar, a professora abre a tela junto com você e ajuda até na configuração do ambiente.</p></article>
-      <article class="card reveal"><span class="num">3</span><h3>Git, GitHub e LinkedIn</h3><p>O curso tem aulas desses temas para você aprender a mostrar o que construiu e se posicionar melhor na área.</p></article>
-      <article class="card reveal"><span class="num">4</span><h3>Confiança e postura profissional</h3><p>Conquistas validadas a cada etapa e feedback para recuperar a confiança.</p></article>
-      <article class="card reveal"><span class="num">5</span><h3>Rede de apoio: você não está sozinha</h3><p>Um grupo de WhatsApp da turma para trocar experiências, dividir dores e comemorar as vitórias.</p></article>
+      <article class="card reveal"><span class="num">3</span><h3>Rede de apoio: você não está sozinha</h3><p>Um grupo de WhatsApp da turma para trocar experiências, dividir dores e comemorar as vitórias.</p></article>
+      <article class="card reveal"><span class="num">4</span><h3>Missão</h3><p id="mv-missao">Dar a mulheres as ferramentas da tecnologia, começando pelo Python e num ambiente acolhedor, para que conquistem autonomia no mercado de trabalho ou no próprio negócio.</p></article>
     </div>
   </div>
 </section>
 
 <!-- ============ EMENTA ============ -->
-<section class="sec sec--dots" id="ementa">
+<section class="sec sec--white" id="ementa">
   <div class="wrap">
-    <p class="pill pill--pink reveal">8 aulas ao vivo</p>
+    <p class="pill reveal">8 aulas ao vivo</p>
     <h2 class="reveal">O que você vai <span class="hl-pink">aprender</span></h2>
     <p class="sec__lead reveal">Python do zero, passo a passo, até chegar a um projeto integrador.</p>
 
@@ -141,10 +158,10 @@
       <li class="card reveal"><span>7</span>Tratamento de erros e arquivos</li>
       <li class="card reveal"><span>8</span>Projeto integrador</li>
     </ol>
-    <p class="extra card card--lime reveal"><b>Também no curso:</b> aulas de Git, GitHub e LinkedIn.</p>
+    <p class="extra card reveal"><b>Também no curso:</b> aulas de Git, GitHub e LinkedIn.</p>
 
     <div class="play card reveal" id="play">
-      <p class="pill pill--ink">Teste na hora</p>
+      <p class="pill">Teste na hora</p>
 
       <div class="play__fields">
         <label>Seu nome
@@ -175,37 +192,14 @@
         <canvas id="play-canvas"></canvas>
         <p class="game__hint" id="play-hint">Toque aqui (ou aperte espaço) para pular</p>
       </div>
-
-      <div class="term">
-        <div class="term__bar" aria-hidden="true"><i></i><i></i><i></i><span>saída do programa</span></div>
-        <div class="term__body" id="play-out" role="log" aria-live="polite"><span class="term__dim">Aperte “Rodar meu código” para ver o resultado.</span></div>
-      </div>
-
-      <p class="play__note">Isso é uma simulação para você enxergar a ideia. Na aula 1 você escreve código de verdade, com a professora ao lado.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ JOSEANE ============ -->
-<section class="sec sec--lime" id="joseane">
+<section class="sec sec--blush" id="joseane">
   <div class="wrap">
-    <aside class="ticket card jo__ticket reveal" id="garanta" aria-label="Resumo da turma">
-      <img class="ticket__logo" src="assets/img/logo.png" width="130" height="130" alt="Logo Workshop PyStart" loading="lazy">
-      <p class="ticket__title">Turma Python básico</p>
-      <ul class="ticket__perks">
-        <li>8 aulas ao vivo e online</li>
-        <li>Professoras atenciosas</li>
-        <li>Aulas de Git, GitHub e LinkedIn</li>
-        <li>Grupo de WhatsApp da turma</li>
-        <li>Turma de só 10 mulheres</li>
-      </ul>
-
-      <p class="ticket__limited">Vagas limitadas</p>
-
-      <p class="ticket__price"><s>R$ 200</s> <span class="ticket__now"><b>R$ 180</b><em>à vista</em></span></p>
-    </aside>
-
-    <p class="pill pill--ink reveal">Conheça a Joseane</p>
+    <p class="pill reveal">Conheça a Joseane</p>
     <div class="jo">
       <figure class="jo__photo reveal">
         <div class="jo__media" id="video">
@@ -219,7 +213,7 @@
       </figure>
 
       <div class="jo__text">
-        <h2 class="reveal">A TI mudou a vida dela. <span class="hl-pink">Ela quer levar isso para você.</span></h2>
+        <h2 class="reveal">A TI mudou a minha vida. <span class="hl-pink">Então eu quero levar isso até você.</span></h2>
 
         <ol class="timeline">
           <li class="reveal"><b>Antes</b><p>Na pandemia, trabalhava como telemarketing: muito estresse, frustração e sem perspectiva. Estudou Meteorologia e se formou em Logística.</p></li>
@@ -227,54 +221,53 @@
           <li class="reveal"><b>Hoje</b><p>A TI a levou à Superintendência da Polícia Federal em SP e ao escritório da Ford na América Latina. Hoje atua com tecnologia no Itaú.</p></li>
         </ol>
 
+        <div class="dream reveal">
+          <p class="pill">O sonho por trás do PyStart</p>
+          <p class="dream__txt">Trazer <strong>autonomia para mulheres através da tecnologia</strong>, dando ferramentas para que elas possam conquistar o mercado de trabalho ou empreender, e se tornarem livres.</p>
+        </div>
+
         <blockquote class="quote reveal">
           “Um emprego digno é poder se proteger, cuidar de quem você ama e viver momentos melhores. E nós, mulheres, também merecemos essa autonomia.”
           <cite>Joseane Lelis</cite>
         </blockquote>
-
-
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ MISSÃO / VISÃO / VALORES ============ -->
-<section class="sec sec--plum" id="proposito">
+<!-- ============ INVESTIMENTO ============ -->
+<section class="sec sec--pink invest" id="investimento">
   <div class="wrap">
-    <p class="pill pill--lime reveal">Nosso propósito</p>
-    <h2 class="reveal">O sonho por trás do <span class="hl-lime">PyStart</span></h2>
+    <aside class="ticket card reveal" id="garanta" aria-label="Resumo da turma">
+      <img class="ticket__logo" src="assets/img/logo.png" width="130" height="130" alt="Logo Workshop PyStart" loading="lazy">
+      <p class="seal"><svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50.0,2.0 55.5,8.4 62.4,3.6 66.1,11.2 74.0,8.4 75.6,16.7 83.9,16.1 83.3,24.4 91.6,26.0 88.8,33.9 96.4,37.6 91.6,44.5 98.0,50.0 91.6,55.5 96.4,62.4 88.8,66.1 91.6,74.0 83.3,75.6 83.9,83.9 75.6,83.3 74.0,91.6 66.1,88.8 62.4,96.4 55.5,91.6 50.0,98.0 44.5,91.6 37.6,96.4 33.9,88.8 26.0,91.6 24.4,83.3 16.1,83.9 16.7,75.6 8.4,74.0 11.2,66.1 3.6,62.4 8.4,55.5 2.0,50.0 8.4,44.5 3.6,37.6 11.2,33.9 8.4,26.0 16.7,24.4 16.1,16.1 24.4,16.7 26.0,8.4 33.9,11.2 37.6,3.6 44.5,8.4"/><circle cx="50" cy="50" r="34"/></svg><span>Última<br>turma<br>do ano</span></p>
+      <p class="ticket__title">Turma Python básico</p>
+      <ul class="ticket__perks">
+        <li>8 aulas ao vivo e online</li>
+        <li>Professoras atenciosas</li>
+        <li>Aulas de Git, GitHub e LinkedIn</li>
+        <li>Grupo de WhatsApp da turma</li>
+        <li>Turma de só 10 mulheres</li>
+      </ul>
 
-    <blockquote class="dream reveal">
-      Trazer <strong>autonomia para mulheres através da tecnologia</strong>, dando ferramentas para que elas possam conquistar o mercado de trabalho ou empreender, e se tornarem livres.
-    </blockquote>
+      <p class="ticket__limited">Vagas limitadas</p>
 
-    <div class="mv">
-      <article class="card card--white reveal">
-        <h3>Missão</h3>
-        <p id="mv-missao">Dar a mulheres as ferramentas da tecnologia, começando pelo Python e num ambiente acolhedor, para que conquistem autonomia no mercado de trabalho ou no próprio negócio.</p>
-      </article>
-      <article class="card card--white reveal">
-        <h3>Visão</h3>
-        <p id="mv-visao">Um mundo em que mais mulheres sejam livres e independentes por meio da tecnologia.</p>
-      </article>
-    </div>
+      <p class="ticket__price"><s>R$ 200</s> <span class="ticket__now"><b>R$ 180</b><em>à vista</em></span></p>
 
-    <h3 class="sub reveal">Nossos valores</h3>
-    <ul class="values">
-      <li class="reveal"><b>Acolhimento</b><span>Ninguém precisa se sentir pequena para aprender.</span></li>
-      <li class="reveal"><b>Paciência</b><span>Cada dúvida importa, sem pergunta boba.</span></li>
-      <li class="reveal"><b>Coragem de errar</b><span>Erro é parte do caminho.</span></li>
-      <li class="reveal"><b>Autonomia</b><span>Ferramentas para a mulher decidir o próprio caminho.</span></li>
-      <li class="reveal"><b>Comunidade</b><span>Ninguém cresce sozinha.</span></li>
-      <li class="reveal"><b>Honestidade</b><span>A gente não promete o que não pode garantir.</span></li>
-    </ul>
+      <div class="ticket__cta">
+        <a class="btn btn--lime btn--lg btn--block btn--cta" data-pay data-when="open" href="#garanta">Garanta sua vaga</a>
+        <a class="btn btn--lime btn--lg btn--block" data-wa="espera" data-when="full" href="#garanta">Entrar na lista de espera</a>
+        <a class="btn btn--lime btn--lg btn--block" data-wa="geral" data-when="closed" href="#garanta">Falar no WhatsApp</a>
+        <a class="btn btn--quiet" data-wa="geral" data-when="open full" href="#garanta">Tirar dúvidas no WhatsApp</a>
+      </div>
+    </aside>
   </div>
 </section>
 
 <!-- ============ FAQ ============ -->
 <section class="sec sec--white" id="duvidas">
   <div class="wrap wrap--narrow">
-    <p class="pill pill--pink reveal">Dúvidas comuns</p>
+    <p class="pill reveal">Dúvidas comuns</p>
     <h2 class="reveal">Perguntas <span class="hl-pink">frequentes</span></h2>
 
     <div class="faq">
@@ -292,27 +285,28 @@
 </section>
 
 <!-- ============ CTA FINAL ============ -->
-<section class="sec sec--ink final" id="final">
+<section class="sec sec--blush final" id="final">
   <div class="wrap wrap--narrow final__in">
     <img src="assets/img/logo.png" width="120" height="120" alt="" loading="lazy">
-    <h2 class="reveal">E se a próxima história <span class="hl-lime">for a sua?</span></h2>
-    <p class="sec__lead reveal">A Turma 01 começa em 14/10, às 19h30. Quando as 10 vagas acabarem, a entrada é pela lista de espera.</p>
+    <h2 class="reveal">E se a próxima história <span class="hl-pink">for a sua?</span></h2>
+    <p class="sec__lead reveal">A Turma 01 começa em 28/11, às 19h30. Quando as 10 vagas acabarem, a entrada é pela lista de espera.</p>
 
-    <div class="countdown countdown--dark" data-countdown>
+    <div class="countdown" data-countdown>
       <div><b data-cd="d">--</b><span>dias</span></div>
       <div><b data-cd="h">--</b><span>horas</span></div>
       <div><b data-cd="m">--</b><span>min</span></div>
       <div><b data-cd="s">--</b><span>seg</span></div>
     </div>
-    <div class="seats seats--dark" data-seats>
+    <div class="seats seats--final" data-seats>
       <div class="seats__bar" role="img" aria-label="Ocupação das vagas"><i data-seats-fill></i></div>
       <p class="seats__txt" data-seats-text>—</p>
     </div>
 
     <div class="cta-row cta-row--center">
-      <a class="btn btn--lime btn--lg" data-pay data-when="open" href="#garanta">Garanta sua vaga</a>
+      <a class="btn btn--lime btn--lg btn--cta" data-pay data-when="open" href="#garanta">Garanta sua vaga</a>
       <a class="btn btn--lime btn--lg" data-wa="espera" data-when="full" href="#garanta">Entrar na lista de espera</a>
       <a class="btn btn--lime btn--lg" data-wa="geral" data-when="closed" href="#garanta">Falar no WhatsApp</a>
+      <a class="btn btn--quiet" data-wa="geral" data-when="open full" href="#garanta">Tirar dúvidas no WhatsApp</a>
     </div>
   </div>
 </section>
@@ -329,7 +323,7 @@
 
 <!-- Barra fixa no celular -->
 <div class="sticky" id="sticky" aria-hidden="true">
-  <p><b data-seats-text>—</b><span>Começa 14/10 às 19h30</span></p>
+  <p><b data-seats-text>—</b><span>Começa 28/11 às 19h30</span></p>
   <a class="btn btn--sm btn--lime" data-pay data-when="open" href="#garanta" tabindex="-1">Garanta sua vaga</a>
   <a class="btn btn--sm btn--lime" data-wa="espera" data-when="full" href="#garanta" tabindex="-1">Lista de espera</a>
 </div>
@@ -349,7 +343,7 @@
   <span class="wa-float__tip">Fale com a gente</span>
 </a>
 
-<script src="config.js"></script>
-<script src="assets/app.js?v=33"></script>
+<script src="config.js?v=2"></script>
+<script src="assets/app.js?v=40"></script>
 </body>
 </html>

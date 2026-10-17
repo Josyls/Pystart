@@ -90,6 +90,12 @@
 
   /* ---------- Contagem regressiva ---------- */
   function pad(n) { return n < 10 ? "0" + n : String(n); }
+  // "28/11, 19h30" a partir de config.inicio (horário de Brasília)
+  var startLabel = (function () {
+    if (isNaN(startMs)) return "";
+    var b = new Date(startMs - 3 * 3600000);
+    return pad(b.getUTCDate()) + "/" + pad(b.getUTCMonth() + 1) + ", " + b.getUTCHours() + "h" + pad(b.getUTCMinutes());
+  })();
   function tick() {
     var diff = startMs - Date.now();
     var closed = isNaN(diff) || diff <= 0;
@@ -105,7 +111,7 @@
       });
     });
     var note = $("[data-cd-note]");
-    if (note) note.textContent = closed ? "A primeira aula já aconteceu" : "para a primeira aula (14/10, 19h30)";
+    if (note) note.textContent = closed ? "A primeira aula já aconteceu" : "para a primeira aula (" + startLabel + ")";
     if (closed && st !== "closed") { st = applyState(); wireLinksState(); }
   }
   function wireLinksState() {
@@ -115,7 +121,7 @@
   setInterval(tick, 1000);
 
   /* ---------- Barra fixa no celular ---------- */
-  // A barra fixa só liga depois que a pessoa VIU o preço (cartão da turma, acima da Joseane).
+  // A barra fixa só liga depois que a pessoa VIU o preço (cartão da turma, no fim da seção da Joseane).
   var hero = $("#topo"), sticky = $("#sticky"), priceCard = $("#garanta");
   if (hero && sticky && priceCard && "IntersectionObserver" in window) {
     var heroOut = false, priceSeen = false;
@@ -134,6 +140,24 @@
       // conta como visto quando o preço aparece na tela (ou se a pessoa já passou dele)
       if (e.isIntersecting || e.boundingClientRect.top < 0) { priceSeen = true; updSticky(); }
     }, { threshold: 0.5 }).observe(priceCard);
+  }
+
+  /* ---------- WhatsApp flutuante ---------- */
+  // Escondido no hero (lá já tem o CTA e o link de dúvidas); aparece quando a pessoa passa de ~80% do hero.
+  var waF = $("#wa-float");
+  if (waF && hero) {
+    var waOn = null;
+    var updWa = function () {
+      var on = (window.scrollY || window.pageYOffset) > hero.offsetHeight * 0.8;
+      if (on === waOn) return;
+      waOn = on;
+      document.body.classList.toggle("wa-on", on);
+      waF.tabIndex = on ? 0 : -1;
+      waF.setAttribute("aria-hidden", on ? "false" : "true");
+    };
+    window.addEventListener("scroll", updWa, { passive: true });
+    window.addEventListener("resize", updWa);
+    updWa();
   }
 
   /* ---------- Animação ao rolar ---------- */
@@ -181,24 +205,39 @@
       fearBoxes.forEach(function (c) { c.checked = saved.indexOf(c.value) !== -1; });
     } catch (e) { /* ignora */ }
   }
-  var mvMissao = $("#mv-missao"), mvVisao = $("#mv-visao");
-  var mvDefault = mvMissao && mvVisao ? [mvMissao.textContent, mvVisao.textContent] : null;
+  var mvMissao = $("#mv-missao");
+  var mvDefault = mvMissao ? mvMissao.textContent : null;
   function applyFears() {
     var f = getFears();
-    if (mvDefault) {
-      if (f.length) {
-        mvMissao.textContent = MV[f[0]] || mvDefault[0];
-        mvVisao.textContent = "Destruir o medo de " + f[0] + " que sempre habitou em você, e te ver livre, dona da própria história.";
-      } else {
-        mvMissao.textContent = mvDefault[0]; mvVisao.textContent = mvDefault[1];
-      }
-    }
+    if (mvMissao) mvMissao.textContent = (f.length && MV[f[0]]) || mvDefault;
     fearListeners.forEach(function (fn) { fn(f); });
   }
+  // lista suspensa: o botão mostra o que foi escolhido e abre/fecha as opções
+  var fSel = $("#fears-sel"), fBtn = $("#fears-btn"), fList = $("#fears"), fVal = $("#fears-val");
+  function fearLabel(c) { return c.parentNode.textContent.trim(); }
+  function syncFearBtn() {
+    if (!fVal) return;
+    var on = fearBoxes.filter(function (c) { return c.checked; });
+    fVal.classList.toggle("is-empty", !on.length);
+    fVal.textContent = !on.length ? "Selecione seus medos" :
+      on.length <= 2 ? on.map(fearLabel).join(", ") : on.length + " medos selecionados";
+  }
+  function setFearsOpen(open, focusBtn) {
+    if (!fList) return;
+    fList.hidden = !open;
+    fBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    if (!open && focusBtn) fBtn.focus();
+  }
+  if (fBtn && fList) {
+    fBtn.addEventListener("click", function () { setFearsOpen(fList.hidden); });
+    $("#fears-ok").addEventListener("click", function () { setFearsOpen(false, true); });
+    document.addEventListener("click", function (e) { if (!fList.hidden && !fSel.contains(e.target)) setFearsOpen(false); });
+    fSel.addEventListener("keydown", function (e) { if (e.key === "Escape" && !fList.hidden) setFearsOpen(false, true); });
+  }
   fearBoxes.forEach(function (c) {
-    c.addEventListener("change", function () { saveFears(); applyFears(); });
+    c.addEventListener("change", function () { saveFears(); applyFears(); syncFearBtn(); });
   });
-  loadFears(); applyFears();
+  loadFears(); applyFears(); syncFearBtn();
 
   /* ---------- Primeiro código: programa + joguinho ---------- */
   var nameIn = $("#play-name");
@@ -272,6 +311,7 @@
 
     // terminal: cada linha = ícone + texto (sempre via textContent)
     function log(icon, txt, cls) {
+      if (!outEl) return;
       var d = outEl.querySelector(".term__dim"); if (d) d.remove();
       var row = document.createElement("div");
       row.className = "term__row" + (cls ? " " + cls : "");
@@ -282,6 +322,7 @@
       outEl.scrollTop = outEl.scrollHeight;
     }
     function logFinal(title, text) {
+      if (!outEl) return;
       var box = document.createElement("div"); box.className = "term__final";
       var b = document.createElement("b"); b.textContent = title; box.appendChild(b);
       if (text) { var p = document.createElement("p"); p.textContent = text; box.appendChild(p); }
@@ -392,7 +433,7 @@
     function draw(t) {
       if (!W) return;
       ctx.clearRect(0, 0, W, H);
-      ctx.fillStyle = "#FFF6C9"; ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, W, H);
       var ground = H - 26;
       // chão pontilhado que corre
       ctx.fillStyle = "#14101C"; ctx.fillRect(0, ground, W, 3);
@@ -404,7 +445,7 @@
       ctx.font = "800 13px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
       G.obs.forEach(function (o) {
         if (o.x > W + 10 || o.x + o.w < -10) return;
-        ctx.fillStyle = o.hit ? "#B79AE0" : "#14101C";
+        ctx.fillStyle = o.hit ? "#F5038B" : "#14101C";
         rr(o.x, ground - o.h, o.w, o.h, 8); ctx.fill();
         ctx.fillStyle = "#C8F918"; ctx.fillText(o.label, o.x + o.w / 2, ground - o.h / 2);
       });
@@ -455,7 +496,7 @@
     function run() {
       cancelAnimationFrame(raf);
       size(); reset(); renderCode();
-      outEl.textContent = "";
+      if (outEl) outEl.textContent = "";
       var v = G.v;
       mark("nome");
       log("▸", "olá, " + v.nome + "!" + (v.job ? " rumo a futura " + v.job : ""), "term__dim2");
@@ -638,5 +679,79 @@
     });
     vmodal.addEventListener("click", function (e) { if (e.target === vmodal) closeVideo(); });
     document.addEventListener("keydown", function (e) { if (!vmodal.hidden && e.key === "Escape") closeVideo(); });
+  }
+
+  /* ---------- Vídeo de fundo do hero ----------
+     1ª volta com som (se o navegador deixar), depois segue em loop sem som,
+     com o botão no cantinho para ligar de novo. */
+  var hv = $("#hero-video"), hs = $("#hero-sound");
+  if (hv && hs) {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var saveData = navigator.connection && navigator.connection.saveData;
+    if (reduce || saveData) {
+      // fica só a imagem de capa: sem movimento e sem gastar dados
+      hv.removeAttribute("preload");
+    } else {
+      var firstLoop = true, userChose = false, inView = true, modalOpen = false;
+      var syncBtn = function () {
+        var on = !hv.muted;
+        hs.setAttribute("aria-pressed", on ? "true" : "false");
+        hs.setAttribute("aria-label", on ? "Desligar o som do vídeo" : "Ligar o som do vídeo");
+        $(".hero__sound-txt", hs).textContent = on ? "Desligar som" : "Ligar som";
+      };
+      var play = function () {
+        var p = hv.play();
+        if (p && p.catch) p.catch(function () {});
+        return p;
+      };
+      var setSound = function (on) { hv.muted = !on; syncBtn(); };
+
+      // tenta começar com som; a maioria dos navegadores bloqueia, então cai para mudo
+      hv.muted = false;
+      var first = hv.play();
+      if (first && first.catch) {
+        first.then(syncBtn).catch(function () { hv.muted = true; syncBtn(); play(); });
+      } else { syncBtn(); }
+      hs.hidden = false;
+
+      // som bloqueado na 1ª volta: liga no primeiro toque/clique da visitante na página
+      var unlock = function (e) {
+        if (e && hs.contains(e.target)) return;
+        document.removeEventListener("pointerdown", unlock, true);
+        document.removeEventListener("keydown", unlock, true);
+        if (firstLoop && !userChose && !modalOpen && hv.muted) setSound(true);
+      };
+      document.addEventListener("pointerdown", unlock, true);
+      document.addEventListener("keydown", unlock, true);
+
+      // fim de cada volta: a partir da 2ª, sem som (a não ser que ela tenha ligado no botão)
+      hv.addEventListener("ended", function () {
+        if (firstLoop) { firstLoop = false; if (!userChose) setSound(false); }
+        hv.currentTime = 0;
+        if (inView && !modalOpen) play();
+      });
+
+      hs.addEventListener("click", function () {
+        userChose = true;
+        setSound(hv.muted);
+        if (hv.paused) play();
+      });
+
+      // pausa quando o hero sai da tela (economiza bateria e não toca som escondido)
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) {
+          inView = entries[0].isIntersecting;
+          if (inView && !modalOpen) play(); else hv.pause();
+        }, { threshold: 0.15 }).observe($("#topo"));
+      }
+
+      // vídeo da Joseane aberto: o de fundo pausa
+      if (vmodal && "MutationObserver" in window) {
+        new MutationObserver(function () {
+          modalOpen = !vmodal.hidden;
+          if (modalOpen) hv.pause(); else if (inView) play();
+        }).observe(vmodal, { attributes: true, attributeFilter: ["hidden"] });
+      }
+    }
   }
 })();
