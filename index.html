@@ -3,20 +3,120 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Workshop PyStart – Python do zero, só para mulheres (Turma 01)</title>
-<meta name="description" content="8 aulas ao vivo e online de Python do zero, só para mulheres. Turma de 10, professoras pacientes, aulas de Git, GitHub e LinkedIn. Começa em 28/11, às 19h30.">
+<title>Curso de Python para mulheres, do zero e ao vivo | Workshop PyStart</title>
+<meta name="description" content="Aprenda Python do zero em 8 aulas ao vivo e online, numa turma só de mulheres. Professoras pacientes, aulas gravadas, Git, GitHub e LinkedIn. Começa em 28/11.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://josyls.github.io/Pystart/">
 <meta name="theme-color" content="#F5038B">
-<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<meta name="author" content="Workshop PyStart">
+<link rel="icon" type="image/png" sizes="128x128" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/logo.png">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
+<!-- Google Search Console: cole aqui a tag de verificação (meta name="google-site-verification") quando tiver -->
 
-<!-- Prévia ao compartilhar no WhatsApp/Instagram/Facebook.
-     TROQUE "SEU-USUARIO" e "SEU-REPOSITORIO" pelo endereço real da página (precisa ser o endereço completo). -->
+<!-- Prévia ao compartilhar (WhatsApp, Instagram, Facebook, LinkedIn, X) -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="Workshop PyStart – Python do zero, só para mulheres">
+<meta property="og:site_name" content="Workshop PyStart">
+<meta property="og:title" content="Curso de Python para mulheres, do zero e ao vivo | Workshop PyStart">
 <meta property="og:description" content="8 aulas ao vivo, turma de 10 mulheres, professoras pacientes. Começa em 28/11 às 19h30.">
-<meta property="og:url" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/">
-<meta property="og:image" content="https://SEU-USUARIO.github.io/SEU-REPOSITORIO/assets/img/og.jpg">
+<meta property="og:url" content="https://josyls.github.io/Pystart/">
+<meta property="og:image" content="https://josyls.github.io/Pystart/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Workshop PyStart: curso de Python para mulheres">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Curso de Python para mulheres, do zero e ao vivo | Workshop PyStart">
+<meta name="twitter:description" content="8 aulas ao vivo, turma de 10 mulheres, professoras pacientes. Começa em 28/11 às 19h30.">
+<meta name="twitter:image" content="https://josyls.github.io/Pystart/assets/img/og.jpg">
+
+<!-- Dados estruturados para o Google (organização, curso, evento online e perguntas frequentes).
+     Ao mudar a data/preço da turma em config.js, atualize também startDate/price aqui. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://josyls.github.io/Pystart/#org",
+      "name": "Workshop PyStart",
+      "url": "https://josyls.github.io/Pystart/",
+      "logo": "https://josyls.github.io/Pystart/assets/img/logo.png",
+      "founder": { "@type": "Person", "name": "Joseane Lelis" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://josyls.github.io/Pystart/#site",
+      "name": "Workshop PyStart",
+      "url": "https://josyls.github.io/Pystart/",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://josyls.github.io/Pystart/#org" }
+    },
+    {
+      "@type": "Course",
+      "@id": "https://josyls.github.io/Pystart/#curso",
+      "name": "Python básico para mulheres",
+      "description": "Curso de Python do zero em 8 aulas ao vivo e online, numa turma exclusiva para mulheres, com aulas gravadas e aulas de Git, GitHub e LinkedIn.",
+      "url": "https://josyls.github.io/Pystart/",
+      "image": "https://josyls.github.io/Pystart/assets/img/og.jpg",
+      "inLanguage": "pt-BR",
+      "educationalLevel": "Iniciante",
+      "teaches": ["Python", "Lógica de programação", "Git", "GitHub", "LinkedIn"],
+      "provider": { "@id": "https://josyls.github.io/Pystart/#org" },
+      "offers": {
+        "@type": "Offer",
+        "category": "Paid",
+        "price": "180",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/LimitedAvailability",
+        "url": "https://josyls.github.io/Pystart/#garanta"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "Online",
+        "startDate": "2026-11-28T19:30:00-03:00",
+        "instructor": { "@type": "Person", "name": "Joseane Lelis" },
+        "location": { "@type": "VirtualLocation", "url": "https://josyls.github.io/Pystart/" }
+      }
+    },
+    {
+      "@type": "EducationEvent",
+      "@id": "https://josyls.github.io/Pystart/#turma",
+      "name": "Workshop PyStart – Python do zero para mulheres (Turma 01)",
+      "description": "Primeira aula da turma de Python do zero, ao vivo e online, exclusiva para mulheres. 8 aulas, turma de 10 alunas.",
+      "image": "https://josyls.github.io/Pystart/assets/img/og.jpg",
+      "startDate": "2026-11-28T19:30:00-03:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+      "inLanguage": "pt-BR",
+      "location": { "@type": "VirtualLocation", "url": "https://josyls.github.io/Pystart/" },
+      "organizer": { "@id": "https://josyls.github.io/Pystart/#org" },
+      "performer": { "@type": "Person", "name": "Joseane Lelis" },
+      "maximumAttendeeCapacity": 10,
+      "offers": {
+        "@type": "Offer",
+        "price": "180",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/LimitedAvailability",
+        "url": "https://josyls.github.io/Pystart/#garanta"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://josyls.github.io/Pystart/#duvidas",
+      "mainEntity": [
+        { "@type": "Question", "name": "Nunca programei. Posso entrar?", "acceptedAnswer": { "@type": "Answer", "text": "Pode. O PyStart é Python do zero e você não precisa saber nada antes." } },
+        { "@type": "Question", "name": "E se eu errar ou travar?", "acceptedAnswer": { "@type": "Answer", "text": "Errar faz parte e ninguém vai achar isso incompetência. Se você travar, a professora abre a tela junto com você e ajuda até na configuração do ambiente. Não existe pergunta boba." } },
+        { "@type": "Question", "name": "As aulas ficam gravadas?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, as aulas ficam gravadas. Elas acontecem ao vivo, às 19h30 (horário de Brasília), e é ao vivo que você tira as dúvidas com a professora." } },
+        { "@type": "Question", "name": "Como eu pago? Dá para pagar mensal?", "acceptedAnswer": { "@type": "Answer", "text": "À vista, são R$ 180 pelo botão “Garanta sua vaga”. Se preferir pagar mensal, em 2× de R$ 100, peça a sua vaga mensal pelo WhatsApp." } },
+        { "@type": "Question", "name": "O Workshop garante emprego?", "acceptedAnswer": { "@type": "Answer", "text": "Não. A gente não promete emprego, salário nem resultado. Prometemos aulas ao vivo, acolhimento e ferramentas (Python, Git, GitHub e LinkedIn) para você dar o primeiro passo." } },
+        { "@type": "Question", "name": "Quantas vagas existem e o que acontece quando acabam?", "acceptedAnswer": { "@type": "Answer", "text": "São 10 vagas, confirmadas por ordem de pagamento. Depois da 10ª pessoa, as próximas entram na lista de espera." } },
+        { "@type": "Question", "name": "Homens podem participar?", "acceptedAnswer": { "@type": "Answer", "text": "Não. A turma é exclusiva para mulheres." } }
+      ]
+    }
+  ]
+}
+</script>
 
 <script>document.documentElement.classList.add("js");if(!location.hash&&(window.scrollY||0)<10)document.documentElement.classList.add("pre-scroll");setTimeout(function(){document.documentElement.classList.add("reveal-all")},3500);</script>
 <link rel="stylesheet" href="assets/style.css?v=62">
